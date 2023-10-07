@@ -25,14 +25,46 @@
 
 
 
-function sum(val) {
-    // homework
-}
+// function sum(val) {
+//     // homework
+//     if(val === undefined){
+//         return 0;
+//     }else{
+//         let res = val;
+//         return function smallerSumHelperMethod(val){
+//             if(val === undefined){
+//                 return res;
+//             }else{
+//                 res += val;
+//                 return smallerSumHelperMethod;
+//             }
+//         }
+//     }
+// }
 
 // console.log(sum())  // 0
 // console.log(sum(1)());  // 1
 // console.log(sum(3)(4)());  // 7
 // console.log(sum(3)(7)(8)());  //18
+
+// cool way to do same task.
+
+// let sum = function (a) {
+//     if (a == undefined) {
+//         return 0;
+//     }
+//     return function (b) {
+//         if (b) {
+//             return sum(a + b);
+//         }
+//         return a;
+//     };
+// };
+
+// console.log(sum(1)(3)(9)());
+// console.log(sum(1)());
+// console.log(sum(1)(2)());
+// console.log(sum());
 
 
 /**
@@ -120,8 +152,8 @@ function calc(n) {
 
 function memoize(fn) {
     let cache = {};
-    return function(val){
-        if(cache[val] !== undefined){
+    return function (val) {
+        if (cache[val] !== undefined) {
             return cache[val];
         }
 
@@ -132,11 +164,11 @@ function memoize(fn) {
 }
 
 
-let efficentCalcFN = memoize(calc);
-console.time();
-console.log(efficentCalcFN(1000000));
-console.timeEnd();
+// let efficentCalcFN = memoize(calc);
+// console.time();
+// console.log(efficentCalcFN(1000000));
+// console.timeEnd();
 
-console.time();
-console.log(efficentCalcFN(1000000));
-console.timeEnd();
+// console.time();
+// console.log(efficentCalcFN(1000000));
+// console.timeEnd();
