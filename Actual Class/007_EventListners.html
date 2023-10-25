@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>click Me </button>
+    <input type="text">
+    <ul></ul>
+
+    <script>
+        const button = document.querySelector("button");
+        const ul = document.querySelector("ul");
+        let input = document.querySelector("input");
+
+
+        console.log("Before");
+        // listen the user input.
+        button.addEventListener("click", cb);
+
+        function cb() {
+            // console.log("Between");
+            if (input.value) {
+                const li = document.createElement("li");
+                const value = input.value;
+                li.textContent = value;
+                ul.append(li);
+                input.value = "";
+            }
+        }
+
+        console.log("After");
+    </script>
+
+</body>
+
+</html>
