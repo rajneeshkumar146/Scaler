@@ -42,9 +42,33 @@
         </div>
     </div>
 
-   <script>
-    
-   </script>
+    <script>
+
+        const button = document.querySelector("#button");
+        const innerBox = document.querySelector("#inner_box");
+        const outerBox = document.querySelector("#outer_box");
+
+        button.addEventListener("click", (e) => {
+            console.log("Button is clicked");
+            console.log("currentTarget: ", e.currentTarget);
+        });
+
+        innerBox.addEventListener("click", (e) => {
+            console.log("Inner Box is clicked");
+            console.log("currentTarget: ", e.currentTarget);
+
+            // e.stopPropagation();
+            e.stopImmediatePropagation();
+        });
+
+        outerBox.addEventListener("click", (e) => {
+            console.log("Outer Box is clicked");
+            console.log("currentTarget: ", e.currentTarget);
+        });
+
+
+
+    </script>
 </body>
 
 </html>

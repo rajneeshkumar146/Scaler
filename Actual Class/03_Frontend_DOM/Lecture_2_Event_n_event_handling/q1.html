@@ -113,6 +113,29 @@
 
 
     <script>
+        const selectBox = document.querySelector("select");
+        const moviesCardArr = document.querySelectorAll(".movies");
+        selectBox.addEventListener("change", (e) => {
+            // alert(e.target.value);
+            filterMovies(e.target.value);
+        });
+
+        // visibility : hidden -> opacity =0, it can be clicked , display : none(is is non existend)
+
+        function filterMovies(currentGenere) {
+            for (let i = 0; i < moviesCardArr.length; i++) {
+                let moviesCardNode = moviesCardArr[i];
+                let movieGenere = moviesCardNode.querySelector("p").getAttribute("data-category");
+                if (movieGenere != currentGenere && currentGenere != "none") {
+                    // moviesCardNode.style.visibility = "hidden";
+                    moviesCardNode.style.display = "none";
+                } else {
+                    moviesCardNode.style.display = "block";
+                }
+            }
+        }
+
+
     </script>
 </body>
 
