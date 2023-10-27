@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: lightcoral;
+            border: 1px solid green;
+            height: 10rem;
+            width: 10rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <input type="text">
+
+
+
+    <script>
+
+        /** Different ways to intract with the webpage?
+         * Mouse: hover, click mouse down, click mouse up, scroll, double click.
+         * Kwyboard: keyup, keydown, keypress = keydown + keyup.
+         * 
+         * 
+         * 
+        */
+        /****************************Mouse*********************************/
+        let box = document.querySelector(".box");
+        // Hover
+        box.addEventListener("mouseover", () => {
+            console.log("hover occured");
+        });
+
+        // box.addEventListener("mouseleave", () => {
+        //     console.log("hover exit occured");
+        // });
+
+        // box.addEventListener("click", () => {
+        //     console.log("click occured");
+        // });
+
+        // box.addEventListener("mousedown", () => {
+        //     console.log("mouseDown occured");
+        // });
+
+        // box.addEventListener("mouseup", () => {
+        //     console.log("mouseUp occured");
+        // });
+
+        // box.addEventListener("dblclick", () => {
+        //     console.log("double click occured");
+        // });
+
+        /*********************Keyboard***************************/
+        let input = document.querySelector("input");
+        // input.addEventListener("keydown", () => {
+        //     console.log("key down called");
+        // });
+
+        // input.addEventListener("keyup", () => {
+        //     console.log("key up called");
+        // });
+
+        input.addEventListener("keypress", (e) => {
+            console.log("Key pressed is: " + e.key);
+        });
+
+
+    </script>
+
+</body>
+
+</html>

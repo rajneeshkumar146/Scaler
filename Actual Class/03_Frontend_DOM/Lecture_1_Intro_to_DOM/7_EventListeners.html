@@ -12,31 +12,33 @@
     <button>click Me </button>
     <input type="text">
     <ul></ul>
-
     <script>
+        // setup
         const button = document.querySelector("button");
         const ul = document.querySelector("ul");
-        let input = document.querySelector("input");
-
-
-        console.log("Before");
-        // listen the user input.
+        const input = document.querySelector("input");
+        
+        // console.log("before");
+        // listening for input
         button.addEventListener("click", cb);
-
+        
         function cb() {
-            // console.log("Between");
+            // when you get the input
+            console.log("Between");
+            // create
             if (input.value) {
                 const li = document.createElement("li");
                 const value = input.value;
-                li.textContent = value;
-                ul.append(li);
+                li.innerText = value;
+                ul.appendChild(li);
                 input.value = "";
             }
+
+
         }
+        console.log("after");
 
-        console.log("After");
     </script>
-
 </body>
 
 </html>

@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <h1>I am list</h1>
     <ul>
 
@@ -17,16 +16,18 @@
     </ul>
 
     <script>
-        //  your task to create a "make coffee".
-
-        // Create Element.
+        //  your task to create a make coffee
+        // create element
         let li = document.createElement("li");
+        //  add attributes+ content
 
-        // Add Attribute + content
-        li.textContent = "Make Coffee"
+        li.textContent = "make coffee";
 
-        // Append that element into your html object.
-        document.querySelector("ul").appendChild(li);
+        let ul = document.querySelector("ul");
+        
+        ul.appendChild(li);
+
+
 
     </script>
 

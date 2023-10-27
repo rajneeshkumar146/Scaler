@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 </head>
+
 <body>
     <ul>
         <li>1</li>
@@ -18,22 +20,18 @@
         <li>9</li>
         <li>10</li>
     </ul>
-
     <script>
-        // Q: Fix the list by making it go from 1 to 10. 
-
-        // Create Element.
+        // Q fix the list by making it go from 1 to 10. 
+        //  creation
         let li = document.createElement("li");
-
-        // Add Attribute + content
+        //  adding attributes+content
         li.textContent = "7";
-
+        // selecting element
         let allList = document.querySelectorAll("li");
-        let ul = document.querySelector("ul");
-        ul.insertBefore(li, allList[6]);
-
+        let ul =document.querySelector("ul");
+        ul.insertBefore(li,allList[6]);
+    
+//  adding
 
     </script>
-    
 </body>
-</html>
