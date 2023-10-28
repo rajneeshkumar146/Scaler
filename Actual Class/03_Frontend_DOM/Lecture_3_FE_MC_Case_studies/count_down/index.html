@@ -1,0 +1,69 @@
+<!-- 
+    Problem statement: Count down timer.
+
+    ## Requrements.
+    Must have features 
+        * pass time in hours , minute and second
+        * play and pause 
+        * Phase 1: validation check and print timer in console.
+        * Phase 2: All buttons should work and UI Update.
+        * Phase 3: validation so that if user enters any time greater 60 then it should move to left bit
+        * edge cases -> validation 
+Good to have
+* reset option 
+  
+Approach:
+      1. HTML/CSS
+        Prepare with basic/static HTML/CSS.
+     
+      2. JavaScript.
+        a. We have to listen to five events listeners-> H,M,S, start,pause, reset.
+        b. Validation check.
+        c. Update UI.
+
+    Edge case: 
+            reset button.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Down Timer</title>
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Count Down Timer</h1>
+        <div class="timer__label">
+            <h2 class="timer__label--hrs">Hours</h2>
+            <h2 class="timer__label--mins">Minutes</h2>
+            <h2 class="timer__label--sec">Second</h2>
+        </div>
+
+        <!-- All the inputs are upto of 2 digits. -->
+        <div class="timer_inputs">
+            <input type="number" maxlength="2" oninput="this.value=this.value.slice(0, this.maxLength)" id="hr">
+            <input type="number" maxlength="2" oninput="this.value=this.value.slice(0, this.maxLength)" id="min">
+            <input type="number" maxlength="2" oninput="this.value=this.value.slice(0, this.maxLength)" id="sec">
+        </div>
+
+        <!-- Buttons -->
+        <div class="container__btns">
+            <button class="btn start" id="start">Start</button>
+            <button class="btn reset" id="reset">Reset</button>
+            <button class="btn pause" id="pause">pause</button>
+            <button class="btn continue" id="continue">continue</button>
+        </div>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
