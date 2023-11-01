@@ -1,0 +1,101 @@
+<!-- 
+
+    Question: Build mutiple comment box.
+
+    Use case:
+       1. Mutiple replies(Example: slack, reddit)
+       2. Feedback box with mutiple threads.
+       3. FB chat 
+
+    Flavour:
+       1. JSON Data -> File system
+
+    Must have features:
+       1. No of thread for a comment.
+       2. How deep Tree can be?
+       3. display comment 
+
+    Good to have features -> optimization, accessibility.
+       1. Option of reaction(emojies) over replies
+       2. We are presist the entire comment thread.
+
+    Approach:
+        1. HTML/CSS:
+           a. Get the static HTML.
+           b. I try to simulate dynamic behaviour into static html to see how my JS which change DOM after click on reply.
+
+        2. JavaScript.
+           a. Event listner:
+              1. reply button -> after click I will see a input box and submit button
+              2. Submit button will give input which change to 'comment-card' with a reply-button.
+
+        3. Edge case: 
+
+ -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Box</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- All the comment and there replies. -->
+
+    <div class="container">
+        <div class="comment-container">
+            <div class="comment-card">
+                <h3 class="comment_text">Good Morning Everyone, How are you?</h3>
+                <div class="reply"> Reply </div>
+            </div>
+
+            <!-- 
+                <div class="comment-reply-container">
+                <input type="text" placeholder="Write Your Comment">
+                <button class="btn-submit">submit</button>
+            </div> 
+        -->
+
+
+
+            <!--             
+                <div class="comment-container">
+                <div class="comment-card">
+                    <h3 class="comment_text">No! I'm not fine</h3>
+                    <div class="reply"> Reply </div>
+                </div>
+
+                <div class="comment-container">
+                    <div class="comment-card">
+                        <h3 class="comment_text">Why? So</h3>
+                        <div class="reply"> Reply </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="comment-container">
+                <div class="comment-card">
+                    <h3 class="comment_text">Yes! I'm fine</h3>
+                    <div class="reply"> Reply </div>
+                </div>
+            </div> 
+        -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
