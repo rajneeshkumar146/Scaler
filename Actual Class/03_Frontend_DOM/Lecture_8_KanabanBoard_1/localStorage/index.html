@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Local storage Example</h2>
+    <ul>
+        <!-- <li>I am an list Item</li>
+        <li>I am an list Item</li>
+        <li>I am an list Item</li>
+        <li>I am an list Item</li> -->
+    </ul>
+    <button id="read">read</button>
+    <button id="remove">remove</button>
+    <button id="add">Add</button>
+
+    <script>
+        const readBtn = document.querySelector("#read");
+        const addBtn = document.querySelector("#add");
+
+        const all_lis = document.querySelectorAll("li");
+        const ul = document.querySelector("ul");
+
+
+        readBtn.addEventListener("click", () => {
+            const localData = [];
+            for (li of all_lis) {
+                localData.push(li.innerText);
+            }
+
+            localStorage.setItem("listItems", JSON.stringify(localData));
+        });
+
+        addBtn.addEventListener("click", () => {
+            let localData = JSON.parse(localStorage.getItem("listItems"));
+            for (data of localData) {
+                const li = document.createElement("li");
+                li.textContent = data;
+                ul.appendChild(li);
+            }
+        })
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

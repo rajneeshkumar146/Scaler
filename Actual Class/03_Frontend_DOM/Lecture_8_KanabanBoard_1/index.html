@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Kanaban Board</title>
+</head>
+
+<body>
+    <!-- For Icons: https://fontawesome.com/icons -->
+
+    <div class="toolbox_cont">
+        <div class="toolbox-priority-cont">
+            <div class="color pink"></div>
+            <div class="color blue"></div>
+            <div class="color purple"></div>
+            <div class="color green"></div>
+        </div>
+
+        <div class="action-btn-cont">
+            <div class="add-btn"><i class="fa-solid fa-plus"></i></div>
+            <div class="remove-btn"><i class="fa-solid fa-trash"></i></div>
+        </div>
+    </div>
+
+    <div class="main_cont">
+        <div class="ticket-cont">
+            <div class="ticket-color green"></div>
+            <div class="ticket-id">#PjWutO</div>
+            <div class="ticket-area">Some task</div>
+            <div class="lock-unlock"><i class="fa-solid fa-lock"></i></div>
+        </div>
+
+        <div class="ticket-cont">
+            <div class="ticket-color pink"></div>
+            <div class="ticket-id">#PjWutO</div>
+            <div class="ticket-area">Some task</div>
+            <div class="lock-unlock"><i class="fa-solid fa-lock"></i></div>
+        </div>
+
+        <div class="ticket-cont">
+            <div class="ticket-color blue"></div>
+            <div class="ticket-id">#PjWutO</div>
+            <div class="ticket-area">Some task</div>
+            <div class="lock-unlock"><i class="fa-solid fa-lock"></i></div>
+        </div>
+    </div>
+
+    <div class="modal-cont">
+        <textarea class="textarea-cont" placeholder="Enter Your task"></textarea>
+        <div class="priority-color-cont">
+            <div class="priority-color pink"></div>
+            <div class="priority-color blue"></div>
+            <div class="priority-color purple"></div>
+            <div class="priority-color green"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/short-unique-id@4.4.4/dist/short-unique-id.min.js"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
