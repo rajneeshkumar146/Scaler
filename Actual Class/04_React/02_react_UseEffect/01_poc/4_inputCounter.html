@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+
+    <!-- algorithm to efficiently manipulate your UI -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+    <!-- React DOM  -> uses react to update the DOM-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- transpiler -> JSX -> into javascript -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style>
+        .set {
+            border-bottom: 1px solid;
+            padding-bottom: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function InputCounter() {
+            const [inputValue, handleInput] = React.useState(0);
+            const handleInputs = (event) => {
+                handleInput(event.target.value);
+            }
+
+            return <div>
+                <div class="set">
+                    <input type="number" value={inputValue} onChange={handleInputs} />
+                    <button>Set</button>
+                </div>
+            </div>;
+        }
+
+        function Counter() {
+            // const { initialValue } = props;
+            const [count, setCount] = React.useState(initialValue);
+
+            const increment = () => {
+                setCount(count + 1);
+            }
+
+            const decrement = () => {
+                setCount(count - 1);
+            }
+            return <div>
+                <button onClick={increment}>+</button>
+                <p>{count}</p>
+                <button onClick={decrement}>-</button>
+            </div>;
+        }
+
+        ReactDOM.render(<InputCounter></InputCounter>, document.getElementById("root"));
+    </script>
+</body>
+
+</html>
