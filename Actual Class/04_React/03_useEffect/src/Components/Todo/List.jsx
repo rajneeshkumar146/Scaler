@@ -1,7 +1,7 @@
 import React from 'react'
 
 function List(props) {
-    const { taskArr } = props;
+    const { taskArr, handleDeleteTaskItem } = props;
 
     return (
         <>
@@ -9,7 +9,9 @@ function List(props) {
                 <ul>
                     {
                         taskArr.map(((taskItem, idx) => {
-                            return <li key={idx}>{taskItem}</li>
+                            return <li onClick={
+                                () => { handleDeleteTaskItem(idx) }
+                            } key={idx} >{taskItem}</li>
                         }))
                     }
                 </ul>

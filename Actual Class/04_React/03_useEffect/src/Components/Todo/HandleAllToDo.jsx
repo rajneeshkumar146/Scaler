@@ -11,10 +11,19 @@ function HandleAllToDo() {
         setTasks(newtaskArray);
     }
 
+    const handleDeleteTaskItem = (taskItemIdx) => {
+        const fileterdTaskItems = taskArr.filter((task, cidx) => {
+            return cidx != taskItemIdx;
+        });
+
+        console.log("That task is going to be deleted: " + task)
+        setTasks(fileterdTaskItems);
+    }
+
     return (
         <>
             <InputBox addTaskItem={addTaskItem}></InputBox>
-            <List taskArr={taskArr} ></List>
+            <List taskArr={taskArr} handleDeleteTaskItem={handleDeleteTaskItem} ></List>
         </>
     )
 }
