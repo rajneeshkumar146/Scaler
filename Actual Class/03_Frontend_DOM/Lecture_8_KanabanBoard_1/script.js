@@ -12,7 +12,7 @@ const mainContainer = document.querySelector(".main_cont");
 let allTickets = localStorage.getItem("localTicket") || [];
 let isFromLocalStorage = false;
 
-if (typeof allTickets === "string") {
+if (typeof allTickets == "string") {
     allTickets = JSON.parse(allTickets);
     console.log(allTickets);
     populateUI();
@@ -20,7 +20,8 @@ if (typeof allTickets === "string") {
 
 function populateUI() {
     isFromLocalStorage = true;
-    for (ticket of allTickets) {
+    for (let i = 0; i < allTickets.length;i++) {
+        let ticket = allTickets[i];
         createTicket(ticket.content, ticket.color, ticket.id, ticket.isLocked);
     }
     isFromLocalStorage = false;
