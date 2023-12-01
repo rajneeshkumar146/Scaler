@@ -1,5 +1,7 @@
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import React, { useState, useEffect } from 'react'
 import Categories from './Categories';
 import ProductList from './ProductList';
@@ -8,7 +10,7 @@ import basicOps from './utility/basicOps';
 function Home() {
 
     /***single source of truth for all the products***/
-    const [products, setProducts] = useState(null);
+    const [products, setProducts] = useState([]);
 
     /************ all the categories -> a product**********/
     const [categories, setCategories] = useState([]);
@@ -23,6 +25,9 @@ function Home() {
 
     /**************************** currcategory : category group you result **********************************/
     const [currCategories, setCurrCategories] = useState(["All Categories"]);
+
+    const [pageSize, setPageSize] = useState(4);
+    const [pageNum, setPageNum] = useState(1);
 
 
 
@@ -45,8 +50,9 @@ function Home() {
         })()
     }, [])
 
-
-    let modifiedArray = basicOps(products, searchTerm, sortDir, currCategories);
+    let object = basicOps(products, searchTerm, sortDir, currCategories, pageNum, pageSize);
+    let modifiedArray = object.modifiedArray;
+    let totalPages = object.totalPages;
 
     return (
         <>
@@ -89,6 +95,35 @@ function Home() {
                 {/* products will be there */}
                 <ProductList productList={modifiedArray} />
             </main>
+
+            <div className="pagination">
+                <button
+                    onClick={() => {
+                        if (pageNum == 1) {
+                            return;
+                        }
+                        setPageNum((pageNum) => pageNum - 1);
+                    }
+                    }
+                    disabled={pageNum == 1 ? true : false}
+                >
+                    <KeyboardArrowLeftIcon fontSize='large'></KeyboardArrowLeftIcon>
+                </button>
+                <div className="pageNum">{pageNum}</div>
+                <button
+                    onClick={() => {
+                        if (pageNum == totalPages) {
+                            return;
+                        }
+                        setPageNum((pageNum) => pageNum + 1);
+                    }
+                    }
+                    disabled={pageNum == totalPages ? true : false}
+                >
+                    <ChevronRightIcon fontSize='large'></ChevronRightIcon>
+                </button>
+
+            </div>
         </>
 
     )
