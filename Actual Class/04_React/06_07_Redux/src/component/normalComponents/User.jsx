@@ -7,7 +7,20 @@ function User() {
     const [loading, setLoading] = useState(true);
 
     // fetch('https://jsonplaceholder.typicode.com/users/1');
-    useEffect( .....   ,[]);
+    useEffect(function () {
+        (async function () {
+            try {
+                setLoading(true);
+                const resp = await fetch('https://jsonplaceholder.typicode.com/users/1');
+                const userRes = await resp.json();
+                setUser(userRes);
+            } catch {
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        })()
+    }, []);
 
     const heading = <h2> User Example</h2>
 
