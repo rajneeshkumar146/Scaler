@@ -14,7 +14,7 @@ function User() {
                 const resp = await fetch('https://jsonplaceholder.typicode.com/users/1');
                 const userRes = await resp.json();
                 setUser(userRes);
-            } catch {
+            } catch(err) {
                 setError(true);
             } finally {
                 setLoading(false);

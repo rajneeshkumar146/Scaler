@@ -1,25 +1,37 @@
 import React from 'react'
+import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserMiddleWare } from '../../redux/middleWare/userMiddleWare';
 import userSlice from '../../redux/userSlice';
 
-const actions = counterSlice.actions;
+const actions = userSlice.actions;
 function UserRedux() {
 
-    const count = useSelector((store) => {
-        return store.counterState.count;
+    const { loading, error, user, param} = useSelector((store) => {
+        return store.userState;
     });
 
+    const [value, setValue] = useState();
+
+    const handleParams = () => {
+        dispatch(actions.setParam(value));
+    }
+
     const dispatch = useDispatch();
-    const handleIncrement = () => {
-        dispatch(actions.increment())
-    }
+    useEffect(function () {
+        dispatch(fetchUserMiddleWare(param))
+    }, []);
 
-    const handleDecrement = () => {
-        // console.log(actions)
-        dispatch(actions.decrement())
-    }
+    const heading = <>
 
-    const heading = <h2> User Example</h2>
+        <h2> User Example</h2>
+        <input
+            type="text"
+            value={value}
+            onChange={(e) => { setValue(e.target.value) }}>
+        </input>
+        <button onClick={handleParams}> Send Params</button>
+    </>
 
     if (loading) {
         return <>
