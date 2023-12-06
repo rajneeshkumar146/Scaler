@@ -15,7 +15,7 @@ function CounterRedux() {
     }
 
     const handleDecrement = () => {
-        console.log(actions)
+        // console.log(actions)
         dispatch(actions.decrement())
     }
 
