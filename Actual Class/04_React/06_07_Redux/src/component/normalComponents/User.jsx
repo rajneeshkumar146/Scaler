@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 
 function User() {
     const [user, setUser] = useState(null);
@@ -6,6 +7,7 @@ function User() {
     const [loading, setLoading] = useState(true);
 
     // fetch('https://jsonplaceholder.typicode.com/users/1');
+    useEffect( .....   ,[]);
 
     const heading = <h2> User Example</h2>
 
