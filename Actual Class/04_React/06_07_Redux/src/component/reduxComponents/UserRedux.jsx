@@ -13,14 +13,16 @@ function UserRedux() {
 
     const [value, setValue] = useState();
 
+    const dispatch = useDispatch();
+    useEffect(function () {
+        if (param != null) {
+            dispatch(fetchUserMiddleWare(param));
+        }
+    }, [param]);
+
     const handleParams = () => {
         dispatch(actions.setParam(value));
     }
-
-    const dispatch = useDispatch();
-    useEffect(function () {
-        dispatch(fetchUserMiddleWare(param))
-    }, []);
 
     const heading = <>
 
