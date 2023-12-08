@@ -8,7 +8,7 @@ function Cart() {
         <>
             <h1>Add to product list</h1>
             <div className="cart_product_wrapper">
-                <ProductList ProductList={productList}></ProductList>
+                <ProductList productList={productList}></ProductList>
             </div>
 
         </>
