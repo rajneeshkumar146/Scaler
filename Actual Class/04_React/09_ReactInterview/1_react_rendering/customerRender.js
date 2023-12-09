@@ -58,21 +58,25 @@ function render(obj) {
     // is your type is string -> it is normal Element;
     if (typeof obj.type === "string") {
         element = document.createElement(obj.type);
+    } else if (typeof obj.type === "function") {
+        const prop = obj["props"];
+        let elementObj = obj.type(prop);
+        return render(elementObj);
     }
 
     const props = obj.props;
     for (let prop in props) {
-        if(prop === "children"){
+        if (prop === "children") {
             const children = props[prop];
             let isArray = Array.isArray(children);
-            if(isArray){
+            if (isArray) {
 
-            }else{
+            } else {
 
             }
         }
         else if (typeof props[prop] === "string") {
-            element.setAttribute(prop, props[prop]); 
+            element.setAttribute(prop, props[prop]);
         }
     }
 
