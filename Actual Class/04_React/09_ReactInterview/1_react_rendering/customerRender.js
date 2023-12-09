@@ -63,8 +63,13 @@ function render(obj) {
     const props = obj.props;
     for (let prop in props) {
         if(prop === "children"){
-            
+            const children = props[prop];
+            let isArray = Array.isArray(children);
+            if(isArray){
 
+            }else{
+
+            }
         }
         else if (typeof props[prop] === "string") {
             element.setAttribute(prop, props[prop]); 
