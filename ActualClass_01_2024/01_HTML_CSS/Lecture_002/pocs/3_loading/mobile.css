@@ -1,0 +1,7 @@
+/* By default min-width: 0px */
+@media only screen and (max-width: 400px ){
+    h1 {
+            text-decoration: underline;
+    }
+    
+}

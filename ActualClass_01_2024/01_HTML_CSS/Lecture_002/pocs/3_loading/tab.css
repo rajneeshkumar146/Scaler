@@ -1,0 +1,7 @@
+/* By default min-width: 0px */
+/* It can be represent as 0 <= info <= 500 */
+@media only screen and (max-width: 500px) {  
+    h1 {
+        background-color: aquamarine;
+    }
+}
