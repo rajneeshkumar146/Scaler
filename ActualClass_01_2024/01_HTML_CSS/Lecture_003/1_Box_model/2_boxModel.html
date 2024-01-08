@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    h1 {
+        text-align: center;
+        font-family: sans-serif;
+        color: darkorange
+    }
+
+    .box {
+
+        /* Height and width both belongs to content */
+        height: 150px;
+        width: 120px;
+
+        padding: 40px;
+
+        border: 10px solid red;
+
+        margin-top: 50px;
+    }
+
+    .content_box {
+        box-sizing: content-box;
+        background-color: lightgreen;
+    }
+
+    .border_box {
+        box-sizing: border-box;
+        background-color: lightskyblue;
+    }
+</style>
+
+<body>
+
+    <h1>Box Model</h1>
+    <div class="box content_box"></div>
+    <div class="box border_box"></div>
+
+</body>
+
+</html>
