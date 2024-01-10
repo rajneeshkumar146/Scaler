@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    /* template starts from here */
+    .parent {
+        margin-left: 1rem;
+        background-color: rgb(146, 85, 202);
+        width: 90vw;
+        /* any position prop -> parent */
+        position: absolute;
+    }
+
+    .box {
+        width: 10rem;
+        height: 10rem;
+        margin-bottom: 1rem;
+        border: dashed;
+    }
+
+    .box1 {
+        background-color: lightblue;
+    }
+
+    .box2 {
+        background-color: lightcoral;
+
+        /* Your browser still treats like your are accupng your orginal space. */
+        position: relative;
+
+        /* It will push you down from your original pos */
+        top: 5rem;
+
+        /* It will push up from your original pos */
+        bottom: 5rem;
+
+        /* It will push ypu left from your original pos */
+        /* left: 5rem; */
+        /* right: 5rem; */
+    }
+
+    .box3 {
+        background-color: lightgreen;
+        /* by default -> broswer will remove your from the current-page, and next element wll occupy your place,
+        you will placed abobe the later element. */
+        position: absolute;
+
+        /* opacity: 0.7; */
+
+        /* by-default: it will take value w.r.t->page origin*/
+        /* top: 15rem; */
+
+        /* bottom: 2rem; */
+
+        /* left:2rem; */
+
+        /* right:2rem; */
+
+    }
+
+    .box4 {
+        background-color: lightsalmon;
+
+        /* opacity:0.1; */
+    }
+</style>
+
+<body>
+    <h2> Position - Absolute, Relative</h2>
+
+    <div class="parent">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+    </div>
+
+
+</body>
+
+</html>
+
+<!-- Original pos -> pos left corner of the element -->
+<!-- #relative 
+* Browser treats the element is if it still occupies it's original pos
+* Without top, bottom, left, right : element stays at org pos
+
+    * top : pushes element down from it's original pos
+    * left : pushed element right from it's original pos
+    * right : pushes element left from it's original pos
+    * bottom : pushes element up from it's original pos
+
+
+    Priority:
+    * right have less priority then left.
+    * top has more priority then bottom.
+-->
+
+<!-- #absolute 
+* Browser removes it from the current flow and next element to it will take it's place
+* without top, left, right, bottom, element stay at original position.
+    * top and left -> top left corner
+    * bottom -> bottom part of the page
+    * right -> right part of the page 
+
+    Priority:
+    * right have less priority then left.
+    * top has more priority then bottom.
+-->
