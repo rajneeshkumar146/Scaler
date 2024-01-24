@@ -19,7 +19,7 @@ let ironMan = {
 // use petersTeam method -> only once 
 
 // equivalent to: ironMan.petersTeam("thor", "loki", "Natasha", "pabusingh", "sushil", "vishal", "dharani", "surya")
-cap.petersTeam.call(ironMan, "thor", "loki", "Natasha", "pabusingh", "sushil", "vishal", "dharani", "surya");  
+// cap.petersTeam.call(ironMan, "thor", "loki", "Natasha", "pabusingh", "sushil", "vishal", "dharani", "surya");  
 // cap.petersTeam.call(ironMan, "thor", { 1: "hi", 2: "rajneesh" });
 
 
@@ -38,13 +38,9 @@ cap.petersTeam.call(ironMan, "thor", "loki", "Natasha", "pabusingh", "sushil", "
  * bind : making permanent copy of that method to use multiple times
  * ******/
 
-// console.log("IronMan Object: ", ironMan);
-// const boundFn = cap.petersTeam.bind(ironMan);
-// console.log("IronMan Object after bind: ", ironMan);
-// console.log("IronMan Object after bind, bound fn: ", boundFn);
-
+const boundFn = cap.petersTeam.bind(ironMan);
 // boundFn(membersArray)
-// boundFn("cap", "war machine");
+boundFn("cap", "war machine");
 
 
 // Guess the answer.-------------------------------------
