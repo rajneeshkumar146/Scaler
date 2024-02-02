@@ -153,6 +153,10 @@ Array.prototype.myReduce = function(logic){
 
 }
 
+Array.prototype.myForEach = function(logic){
+
+}
+
 
 
 
