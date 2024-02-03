@@ -124,16 +124,35 @@ console.log(obj3);
 
 //  loop -> object -> for in loop -> iterate over all the prop of the object , 
 // inherited which are enumrable to for in
-for(let key in obj3){
-    console.log("Keys are: ", key)
+// for(let key in obj3){
+//     console.log("Keys are: ", key)
+// }
+
+// T: O(P + Q + R), where P is no of elements in obj3, Q is no of elements in obj2, R is no of elements in obj.
+// for (let key in obj3) {
+//     if (obj3.hasOwnProperty(key)) {
+//         console.log("My Keys: ", key)
+//     } else if (obj2.hasOwnProperty(key)) {
+//         console.log("My Parent Keys: ", key)
+//     } else if (obj.hasOwnProperty(key)) {
+//         console.log("My Grand Parent Keys: ", key)
+//     }
+// }
+
+//2.
+/**
+ * object.keys -> normal loop
+ * **/
+let keys = Object.keys(obj3);
+for (let i = 0; i < keys.length; i++) {
+    console.log(i + " " + keys[i]);
 }
 
-for(let key in obj3){
-    if(){
-        console.log("My Keys: ", key)
-    }else if(){
-        console.log("My Parent Keys: ", key)
-    }else{
-        console.log("My Grand Parent Keys: ", key)
+// Question: Can you write a loop to print all members of my object but you need to ignore member of all parent class. And Can you optimize that operations.
+// T: O(P) where P is no of elements in obj3
+for (let key in obj3) {
+    if (!obj3.hasOwnProperty(key)) {
+        break;
     }
+    console.log(key);
 }
