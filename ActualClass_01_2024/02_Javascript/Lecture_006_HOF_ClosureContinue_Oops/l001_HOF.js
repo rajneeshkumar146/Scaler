@@ -137,11 +137,11 @@
 
 let elems = [1, 2, 3, 4, 5];
 
-function sum(sumSoFar, ele){
+function sum(sumSoFar, ele) {
     return sumSoFar + ele;
 }
 
-function product(productSoFar, ele){
+function product(productSoFar, ele) {
     return productSoFar * ele;
 }
 
@@ -149,13 +149,27 @@ console.log("Sum: ", elems.reduce(sum));
 console.log("Product: ", elems.reduce(product));
 
 // HW:
-Array.prototype.myReduce = function(logic){
+Array.prototype.myReduce = function (logic, intialValue) {
+    let result = intialValue;
+    for (let ele of this) {
+        result = logic(result, ele);
+    }
 
+    return result;
 }
 
-Array.prototype.myForEach = function(logic){
+console.log("Sum: ", elems.myReduce(sum, 0));
+console.log("Product: ", elems.myReduce(product, 1));
 
-}
+// Array.prototype.myForEach = function (logic) {
+//     for (ele of this) {
+//         logic(ele);
+//     }
+// }
+
+// elems.myForEach((ele) => {
+//     console.log(ele * ele);
+// });
 
 
 
