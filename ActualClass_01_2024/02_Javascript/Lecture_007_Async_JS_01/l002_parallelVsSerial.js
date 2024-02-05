@@ -82,6 +82,13 @@ const fs = require("fs");
 
 console.log("Before");
 
+fs.readFile("./f1.txt", f1cb);
 
+function f1cb(err, content_1) {
+    fs.readFile("./f2.txt", f2cb);
+    function f2cb(err, content_2) {
+        console.log("Concated Result: " + content_1 + " & " + content_2);
+    }
+}
 
 console.log("After");
