@@ -80,15 +80,28 @@ const fs = require("fs");
  * 
  * */
 
-console.log("Before");
+// console.log("Before");
 
-fs.readFile("./f1.txt", f1cb);
+// fs.readFile("./f1.txt", f1cb);
 
-function f1cb(err, content_1) {
-    fs.readFile("./f2.txt", f2cb);
-    function f2cb(err, content_2) {
-        console.log("Concated Result: " + content_1 + " & " + content_2);
+// function f1cb(err, content_1) {
+//     fs.readFile("./f2.txt", f2cb);
+//     function f2cb(err, content_2) {
+//         console.log("Concated Result: " + content_1 + " & " + content_2);
+//     }
+// }
+
+// console.log("After");
+
+
+function readFilesRec(listOfPath){
+    if(listOfPath.size() == 0){
+        return "";
+    }
+
+    fs.readFile(listOfPath.pop(), cb);
+    function cb(err, data){
+        res = readFilesRec(listOfPath);
+        console.log(data + " & " + res);
     }
 }
-
-console.log("After");
