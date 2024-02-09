@@ -1,4 +1,4 @@
-const { runMlAlgo } = require("./lib");
+const { runMlAlgo, prunMlAlgo } = require("./lib");
 
 console.log("Before");
 
@@ -10,11 +10,18 @@ let priceofOne = 20;
  * and it calls the cb for us
  * */
 
-runMlAlgo(cb);
+// runMlAlgo(cb);
 function cb() {
     amount = amount - priceofOne;
     console.log("Amount: ", amount);
 }
+
+const promise = prunMlAlgo();
+promise.then(() => {
+    cb();
+}).catch((err) => {
+    console.log("ohh! I hit by error");
+});
 
 
 console.log("After");
