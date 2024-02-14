@@ -19,7 +19,7 @@ const RESOLVED = "resolved";
 const REJECTED = "rejected";
 
 // Function Constructor.
-function CustomPromise(executorFn){
+function CustomPromise(executorFn) {
     // Add required properties and methods.
     // Promise dose not expose these properties.
     let State = PENDING;
@@ -29,24 +29,48 @@ function CustomPromise(executorFn){
     let fcbArr = [];  // It can be a queue.
 
     // atach resolve.
-    const resolve = (Value) => {
+    const resolve = (value) => {
+        if (State != PENDING) return;
 
+        State = RESOLVED;
+        Value = value;
+
+        // Call your all success from call back array.
+        scbArr.forEach((cb) => {
+            cb(value);
+        })
     }
 
     // attach reject.
-    const reject = (Value) => {
+    const reject = (value) => {
+        if (State != PENDING) return;
 
+        State = REJECTED;
+        Value = value;
+
+        // Call your all failure from call back array.
+        fcbArr.forEach((cb) => {
+            cb(value);
+        })
     }
 
     // thread then with resolve.
-    this.then = function(cb){
-
+    this.then = function (cb) {
+        if (State == RESOLVED) {
+            cb(Value);
+        } else {
+            scbArr.push(cb);
+        }
     }
 
 
     // thread catch with reject.
-    this.catch = function(cb){
-
+    this.catch = function (cb) {
+        if (State == REJECTED) {
+            cb(Value);
+        } else {
+            fcbArr.push(cb);
+        }
     }
 
     // Most Important: don't forget to call your executor function.
