@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        background-color: lightcoral;
+        border: 1px solid green;
+        height: 10rem;
+        width: 10rem;
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+
+</body>
+<script>
+    /** What are the ways to add event Listeners?
+     * inLine events:
+     * addEventListners: 
+     */
+
+    let box = document.querySelector(".box");
+    /********************* 1. inline ******************/
+    // box.onclick = function(){
+    //     console.log("I was Clicked");
+    //     // alert("I was clicked");
+    // }
+
+    // box.onclick = function(){
+    //     console.log("I am fake");
+    //     alert("I am fake");
+    // }
+
+     /*******************2.eventListener****************************/
+    //  box.addEventListener("click", () => {
+    //     console.log("I was Clicked");
+    //  });
+
+    //  box.addEventListener("click", () => {
+    //     console.log("I was Fake");
+    //  });
+
+    box.addEventListener("click", cb, { once: true });
+
+    function cb(){
+        let h1 = document.createElement("h1");
+        h1.textContent = "Hello";
+        document.body.appendChild(h1);
+
+        // box.removeEventListener("click", cb);   // One way to solve the problem.
+    }
+</script>
+
+</html>

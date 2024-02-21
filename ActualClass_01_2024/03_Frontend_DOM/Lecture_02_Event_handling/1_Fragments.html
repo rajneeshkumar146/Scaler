@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Fragment: Fragment is wrap up a collection of html tags. -->
+
+    <h1>List Items</h1>
+    <ul id="listContainer"></ul>
+    <script>
+        let ul = document.querySelector("#listContainer");
+        let N = 10000;
+        // for(let i = 0; i < N;i++){   // O(N^2)
+        // // creation.
+        // let newLi = document.createElement("li");
+
+        // // Update.
+        // newLi.textContent = `I am list item ${i}`
+
+        // //Append our child.
+        // ul.appendChild(newLi);   // O(N)
+        // }
+
+
+        // Smarter way to solve above problem.
+        let fragment = document.createDocumentFragment();
+        for (let i = 0; i < N; i++) {   // O(N)
+            // creation.
+            let newLi = document.createElement("li");
+
+            // Update.
+            newLi.textContent = `I am list item ${i}`
+
+            //Append our child.
+            fragment.appendChild(newLi);   // O(1)
+        }
+
+        // console.log(fragment);
+        ul.appendChild(fragment);   // O(N)
+    </script>
+</body>
+
+</html>
+
+<!-- 
+
+    MC round : add sub-components: fragment
+
+
+ -->
