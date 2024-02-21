@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div[id] {
+
+            border: 1px solid red;
+        }
+
+        #outer_box {
+            height: 10rem;
+            width: 10rem;
+            background-color: lightblue;
+        }
+
+        #inner_box {
+            height: 50%;
+            width: 50%;
+            background-color: lightgreen;
+            margin-top: 10px;
+        }
+
+        #button {
+            margin-top: 3px;
+            background-color: lightsalmon;
+            width: 50%;
+            margin-left: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event Bubbling</h1>
+    <div id="outer_box">
+        <div id="inner_box">
+            <div id="button">Click Me </div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    /** Event Bubbling
+     * When an event occurs on an element, then that event travels up from itself to the document via all the 
+     * ancestor elements is known as Event Bubbling.
+    */
+
+    const button = document.querySelector("#button");
+    const innerBox = document.querySelector("#inner_box");
+    const outerBox = document.querySelector("#outer_box");
+
+    button.addEventListener("click", (e) => {
+        console.log("Button is clicked");
+        console.log("current target: ", e.currentTarget);
+
+        // e.stopPropagation();
+    });
+
+    innerBox.addEventListener("click", (e) => {
+        console.log("Inner box is clicked");
+        console.log("current target: ", e.currentTarget);
+
+        // e.stopPropagation();
+        e.stopImmediatePropagation();
+
+    });
+
+    outerBox.addEventListener("click", (e) => {
+        console.log("Outer box is clicked");
+        console.log("current target: ", e.currentTarget);
+
+        e.stopPropagation();
+    });
+
+
+    /** 
+     * 1. e.target: the dom node on which the event has occurred
+     * 
+     * 2. e.currentTarget: the dom node on which the event listener is present
+     * 
+     * 3. event.stopPropogation(): This function prevents further propagation of the current event bubbling.
+     * 
+     * 4. event.stopImmediatePropogation(): If several listeners are attached to the same element for the same 
+     * event type, they are called in the order in which they were added. If stopImmediatePropagation() is 
+     * invoked during one such call, no remaining listeners will be called, either on that element or any other element.
+     * 
+     * 
+    */
+
+</script>
+
+</html>

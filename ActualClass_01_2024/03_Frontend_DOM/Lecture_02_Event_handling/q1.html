@@ -110,10 +110,31 @@
         <p class="price" data-category="comedy">Rs 200</p>
     </div>
     <!-- Q Make the filter work  -->
-
-    
-
-
 </body>
+
+<script>
+    const selectBox = document.querySelector("select");
+    const moviesCardArr = document.querySelectorAll(".movies");
+    selectBox.addEventListener("change", (e) => {
+        // console.log(e.target.value);
+        filterMovies(e.target.value);
+    })
+
+    // visibility : hidden -> opacity =0, it can be clicked , display : none(is is non existend)
+    function filterMovies(currentGenere) {
+        for (let i = 0; i < moviesCardArr.length; i++) {
+            let movieCardNode = moviesCardArr[i];
+            let movieGenre = movieCardNode.querySelector("p").getAttribute("data-category");
+
+            if (movieGenre != currentGenere && currentGenere != "none") {
+                // movieCardNode.style.visibility = "hidden";
+                movieCardNode.style.display = "none";
+            } else {
+                movieCardNode.style.display = "block";
+            }
+        }
+
+    }
+</script>
 
 </html>
