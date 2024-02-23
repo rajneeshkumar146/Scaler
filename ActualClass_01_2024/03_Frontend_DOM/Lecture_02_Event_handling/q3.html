@@ -38,10 +38,9 @@ Consider the following HTML structure: -->
         function addToCart(e) {
             if (e.target.getAttribute("class") === "add-to-cart") {
                 let product = e.target.parentElement;
-                // console.log(product);
                 let price = product.children[1].innerText;
 
-                console.log(`You have added ${price} to your cart`);
+                // console.log(`You have added ${price} to your cart`);
             }
         }
     </script>
