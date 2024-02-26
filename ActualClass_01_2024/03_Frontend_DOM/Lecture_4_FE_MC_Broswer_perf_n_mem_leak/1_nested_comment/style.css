@@ -1,0 +1,39 @@
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+html,
+body {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* Styling */
+.container{
+    padding: 1rem 3rem
+}
+
+.comment-container{
+    padding-left: 1rem;
+    border-left: 1px solid black;
+}
+
+.reply{
+    color:red;
+    padding-left: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+

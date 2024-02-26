@@ -1,0 +1,103 @@
+<!-- 
+
+    Question: Build mutiple comment box.
+
+    Use case:
+       1. Mutiple reply(Example: Slack, rediit)
+       2. Feedback box ith multiple threads.
+       3. fb chat.
+       4. blog comment box.
+
+    Flavor:
+       1. JSON Data -> File system.
+
+    Must have features:
+       1. display comment.
+       2. Number of threads for a comment.
+       3. How deep three can be?
+
+    Good to have features:
+       1. Option of reaction(emojies) over replies.
+       2. We have to presist the entire comment thread.
+
+    Approach:
+       1. HTML/CSS
+          a. Get the static HTML.
+          b. I try o simulate the dynamic behaviour of my static html, to see how my JS change DOM.
+
+       2. JavaScript.
+          a. Event Listner.
+             i. reply button -> after click I will see a input box and submit button.
+             ii. Once submit button clicked we have to show the input on my HTML.
+
+       Edge Case:
+          If person invoked reply action multiples times, this should be count as a one action.
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nested Comment Box</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="comment-container">
+            <div class="comment_card">
+                <h3 class="coment_text">Good Morning Everyone, How are you?</h3>
+                <div class="reply">Reply</div>
+            </div>
+
+            <!-- Taking input -->
+            <!-- 
+                <div class="comment_reply_container">
+                <input type="text" placeholder="Write your comment">
+                <button class="btn-submit">submit</button>
+            </div> 
+        -->
+
+            <!-- Threads -->
+            <!-- <div class="comment-container">
+                <div class="comment_card">
+                    <h3 class="coment_text">Thanks for asking, How are you?</h3>
+                    <div class="reply">Reply</div>
+                </div>  
+
+                <div class="comment-container">
+                    <div class="comment_card">
+                        <h3 class="coment_text">Cool!!!</h3>
+                        <div class="reply">Reply</div>
+                    </div>
+                    
+                    <div class="comment-container">
+                        <div class="comment_card">
+                            <h3 class="coment_text">Thanx!!!</h3>
+                            <div class="reply">Reply</div>
+                        </div>  
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="comment-container">
+                <div class="comment_card">
+                    <h3 class="coment_text">Thanks for asking, How you are doing?</h3>
+                    <div class="reply">Reply</div>
+                </div>  
+            </div>
+ -->
+
+        </div>
+    </div>
+
+</body>
+
+</html>
