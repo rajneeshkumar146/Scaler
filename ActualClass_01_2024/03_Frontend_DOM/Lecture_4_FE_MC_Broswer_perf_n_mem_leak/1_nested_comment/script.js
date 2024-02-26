@@ -20,6 +20,11 @@ function createReplyInput(e) {
     const input = document.createElement("input");
     const button = document.createElement("button");
 
+//     <div class="comment_reply_container">
+//         <input type="text" placeholder="Write your comment">
+//         <button class="btn-submit">submit</button>
+//     </div> 
+
     replyContainer.setAttribute("class", "comment_reply_container");
 
     input.setAttribute("type", "text");
@@ -48,4 +53,6 @@ function createComment(e) {
 
     const input = e.target.parentNode.children[0];
     // console.log(input.value);
+
+    
 }
