@@ -1,0 +1,52 @@
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* Chessboard */
+.heading{
+    text-align: center;
+}
+
+.table{
+    margin: 0 auto;
+}
+
+.box{
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid gray;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.white{
+    background-color: white;
+}
+
+.black{
+    background-color: Black;
+}
+
+.yellow{
+    background-color: yellow;
+}
