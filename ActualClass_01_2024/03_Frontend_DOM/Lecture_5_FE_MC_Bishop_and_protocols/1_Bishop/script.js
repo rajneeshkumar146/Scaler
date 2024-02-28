@@ -4,6 +4,7 @@ window.addEventListener("load", function () {
 
     let table = this.document.querySelector("#table");
     let N = 8, M = 8;
+    let palyer = "queen";
 
     // chess grid creation.
 
@@ -20,11 +21,11 @@ window.addEventListener("load", function () {
             isWhite = !isWhite;
         }
         table.appendChild(tr);
-        hoverEffect(table, N, M);
     }
+    hoverEffect(table, N, M, palyer);
 });
 
-function hoverEffect(table, N, M) {
+function hoverEffect(table, N, M, player) {
     let boxArr = document.querySelectorAll(".box");
 
     table.addEventListener("mouseover", (e) => {
@@ -35,15 +36,16 @@ function hoverEffect(table, N, M) {
         }
 
         removeYellowColorFromAllCells(boxArr);
-        e.target.classList.add("yellow");
 
         let [curr_row, curr_col] = dataIndex.split("-").map(idx => idx);
-        storageOfPossibleMoves = possibleMoves(curr_row, curr_col, N, M);
 
-        colorMyPossibleMoves(storageOfPossibleMoves);
+        let directionVector = getDirectionVector(player);
+        let maxRadius = getMaxiumRadius(player)
+        storageOfPossibleMoves = possibleMoves(parseInt(curr_row), parseInt(curr_col), N, M, directionVector, maxRadius);
 
-        mouseLeave(table);
+        colorMyPossibleMoves(storageOfPossibleMoves, boxArr);
     });
+    mouseLeave(table, boxArr);
 }
 
 
@@ -53,10 +55,59 @@ function removeYellowColorFromAllCells(boxArr) {
     }
 }
 
-function possibleMoves() {
+function possibleMoves(curr_row, curr_col, N, M, direction, maxRadius) {
     storageOfPossibleMoves = {};
 
+    for (let dir of direction) {
+        for (let radius = 0; radius <= maxRadius; radius++) {
+            let r = curr_row + (radius * dir[0]);
+            let c = curr_col + (radius * dir[1]);
+
+            if (r >= 0 && c >= 0 && r < N && c < M) {
+                let dataIndex = `${r}-${c}`;
+                //    console.log(dataIndex);
+                storageOfPossibleMoves[dataIndex] = true;
+            } else {
+                break;
+            }
+        }
+    }
 
     return storageOfPossibleMoves;
+}
+
+function colorMyPossibleMoves(storageOfPossibleMoves, boxArr) {
+    for (let boxCell of boxArr) {
+        let curr_dataIndex = boxCell.dataset.index;
+        if (storageOfPossibleMoves[curr_dataIndex]) {
+            boxCell.classList.add("yellow");
+        }
+    }
+}
+
+function mouseLeave(table, boxArr) {
+    table.addEventListener("mouseleave", () => {
+        removeYellowColorFromAllCells(boxArr);
+    });
+}
+
+function getDirectionVector(player) {
+    if (player == "bishop") {
+        return [[1, 1], [-1, 1], [1, -1], [-1, -1]];
+    } else if (player == "queen") {
+        return [[1, 1], [-1, 1], [1, -1], [-1, -1], [0, 1], [1, 0], [0, -1], [-1, 0]]
+    } else if (player == "knight") {
+        return [[-2, -1], [-1, -2], [1, -2], [2, -1], [-2, 1], [-1, 2], [1, 2], [2, 1]];
+    }
+}
+
+function getMaxiumRadius(player) {
+    if (player == "bishop") {
+        return 8;
+    } else if (player == "queen") {
+        return 8;
+    } else if (player == "knight") {
+        return 1;
+    }
 }
 
