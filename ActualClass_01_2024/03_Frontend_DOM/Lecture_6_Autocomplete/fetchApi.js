@@ -18,12 +18,20 @@
 // })
 
 
-async function getCoutries(keyword){
+async function getCountries(keyword){
     try{
         const rawResponse = await fetch(`https://restcountries.com/v3.1/name/${keyword}`);
         const response = await rawResponse.json();
 
-
+        if(rawResponse.status === 404){
+            console.log("Page Not Found");
+            return [];
+        }else if(rawResponse.status === 500){
+            console.log("Internal server Error");
+            return [];
+        }else{
+            console.log("Data found"); // It is a 200ok status.
+        }
 
         return response;
     }catch(err){
@@ -32,9 +40,9 @@ async function getCoutries(keyword){
 
 }
 
-getCountries("ind").then(console.log).catch(console.log);
+// getCountries("india").then(console.log).catch(console.log);
 
-export default getCoutries;
+export default getCountries;
 
 
 
