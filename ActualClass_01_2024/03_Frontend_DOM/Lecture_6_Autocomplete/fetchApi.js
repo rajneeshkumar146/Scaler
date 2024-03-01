@@ -10,7 +10,7 @@
  * */
 
 
-// fetch('https://restcountries.com/v3.1/name/ind').then(function (response) {
+// fetch('https://restcountries.com/v3.1/name/zzz').then(function (response) {
 //     console.log("My response: ", response);
 //     return response.json();
 // }).then(console.log).catch((err) => {
@@ -19,6 +19,16 @@
 
 
 async function getCoutries(keyword){
+    try{
+        const rawResponse = await fetch(`https://restcountries.com/v3.1/name/${keyword}`);
+        const response = await rawResponse.json();
+
+
+
+        return response;
+    }catch(err){
+        console.log("err: ", err);
+    }
 
 }
 
