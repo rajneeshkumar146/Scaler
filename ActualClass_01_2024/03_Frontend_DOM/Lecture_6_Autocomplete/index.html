@@ -1,0 +1,46 @@
+<!-- 
+
+    ## Problem statement : create Autocomplete/ Typeahead.
+
+    ## Must Haves.
+       1. On typing inside the search box, It should suggest related terms.
+       2. Use this api point to fetch the data : https://restcountries.com/v3.1/name/`${name}`
+       3. [Optional] User should be able to select one of the options.
+
+    # Good to have.
+       1. Search should be performant enough.
+       2. It should avoid unnecessary network call.
+       3. It should persist previosly fetched data.
+       4. Showing the first search result as a placeholder in the input.
+       5. Animation in showing suggestion.
+       6. Scroll bar.
+
+    # scoping
+      Data Source
+         -> api -> get data fromapi -> convert in promise -> certain minimum number of character after which first search should happen.
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Auto Complete</title>
+</head>
+<body>
+
+    <div class="autocomplete">
+        <h2>Auto complete</h2>
+        <input type="text" class="searh_input" id="search_input">
+        <ul id="suggestion_box" class="suggestion_box"></ul> 
+
+        <script src="fetchApi.js" type="module"></script>
+    </div>
+
+</body>
+
+</html>
