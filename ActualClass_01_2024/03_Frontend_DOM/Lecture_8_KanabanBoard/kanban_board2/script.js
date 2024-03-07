@@ -20,11 +20,10 @@ if (typeof allTickets === "string") {
 }
 
 function populateUI() {
-    console.log(allTickets);
     isFromLocalStorage = true;
     for (let i = 0; i < allTickets.length; i++) {
         let ticket = allTickets[i];
-        buildTicketWithAllFeatures(ticket.content, ticket.color, ticket.isLocked, ticket.id);
+        buildTicketWithAllFeatures(ticket.content, ticket.color, ticket.isLocked, ticket.id, ticket.isPending);
     }
     isFromLocalStorage = false;
 }
@@ -126,12 +125,12 @@ function deleteListner(ticketContainer, id) {
             ticketContainer.remove();
 
             // Update your local storage about the current status.
-            // let newAllTickets = allTickets.filter((ticketObject) => {
-            //     return ticketObject.id !== id;
-            // });
+            let newAllTickets = allTickets.filter((ticketObject) => {
+                return ticketObject.id !== id;
+            });
 
-            // allTickets = newAllTickets;
-            // updateLocalStorage();
+            allTickets = newAllTickets;
+            updateLocalStorage();
         }
     });
 }
@@ -197,7 +196,7 @@ function createTicketWithContentAndActiveColor(modal, priorityColorArrayOfModal)
         }
 
         const id = uid();
-        buildTicketWithAllFeatures(writtenContent, selectedColor, true, id);
+        buildTicketWithAllFeatures(writtenContent, selectedColor, true, id, true);
 
         textArea.value = "";
         modal.style.display = "none";
@@ -205,7 +204,7 @@ function createTicketWithContentAndActiveColor(modal, priorityColorArrayOfModal)
     });
 }
 
-function buildTicketWithAllFeatures(writtenContent, selectedColor, isLocked, currentId) {
+function buildTicketWithAllFeatures(writtenContent, selectedColor, isLocked, currentId, isPending) {
     if (writtenContent == "") {
         return;
     }
@@ -214,13 +213,22 @@ function buildTicketWithAllFeatures(writtenContent, selectedColor, isLocked, cur
 
     const ticketContainer = document.createElement("div");
     ticketContainer.setAttribute("class", "ticket-cont");
+    ticketContainer.setAttribute("draggable", "true");
     ticketContainer.innerHTML =
         `<div class="ticket-color ${selectedColor}"></div>
     <div class="ticket-id">#${currentId}</div>
     <div class="ticket-area">${writtenContent}</div>
     <div class="lock-unlock"><i class="fa-solid ${lockOrUnlock}"></i></div>`;
 
-    mainContainer.appendChild(ticketContainer);
+    // mainContainer.appendChild(ticketContainer);
+
+    const pendingContainer = document.querySelector(".pending-cont");
+    const finishedContainer = document.querySelector(".finished-cont");
+    if (isPending) {
+        pendingContainer.appendChild(ticketContainer)
+    } else {
+        finishedContainer.appendChild(ticketContainer);
+    }
 
     // attach other features like lock-unlock, toggle color etc.,
 
@@ -233,16 +241,17 @@ function buildTicketWithAllFeatures(writtenContent, selectedColor, isLocked, cur
     deleteListner(ticketContainer, currentId);
 
     if (!isFromLocalStorage) {
-        createTicketObjAndUpdateLocalStorage(currentId, writtenContent, selectedColor, isLocked);
+        createTicketObjAndUpdateLocalStorage(currentId, writtenContent, selectedColor, isLocked, isPending);
     }
 }
 
-function createTicketObjAndUpdateLocalStorage(currentId, writtenContent, selectedColor, isLocked) {
+function createTicketObjAndUpdateLocalStorage(currentId, writtenContent, selectedColor, isLocked, isPending) {
     let ticketObj = {
         id: currentId,
         content: writtenContent,
         color: selectedColor,
         isLocked: isLocked,
+        isPending: isPending
     }
 
     allTickets.push(ticketObj);
@@ -255,9 +264,6 @@ function resetActiveStatusOfColorModal(priorityColorArrayOfModal) {
         priorityColor.classList.remove("active");
     }
 }
-
-
-
 
 
 //=========================  Calling methods ===========================

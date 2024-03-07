@@ -29,6 +29,19 @@
     </header>
 
     <div class="main_cont">
+        <div class="heading_cont">
+            <h2 class="task_heading--pending">Pending</h2>
+            <h2 class="task_heading--finished">Finished</h2>
+        </div>
+
+        <div class="container_wrapper">
+            <div class="pending-cont container" aria-label="pending Tasks" aria-live="assertive">
+
+            </div>
+            <div class="finished-cont container" aria-label="finished tasks" aria-live="polite">
+
+            </div>
+        </div>
     </div>
 
     <div class="modal-cont">
@@ -44,6 +57,7 @@
     <script src="https://cdn.jsdelivr.net/npm/short-unique-id@4.4.4/dist/short-unique-id.min.js"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script src="dragAndDrop.js"></script>
 </body>
 
 </html>
