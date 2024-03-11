@@ -45,7 +45,24 @@
             </div>
         }
 
-        ReactDOM.render(<List2 />, document.getElementById("root")); 
+        function List3(obj) {
+            // let stationary = ["Pen", "Pencil", "Eraser", "Ruler"];
+            let { stationary } = obj;
+            let listItem = [];
+            for (let i = 0; i < stationary.length; i++) {
+                const liItem = <li>{stationary[i]}</li>
+                listItem.push(liItem);
+            }
+
+            return <div>
+                <h2>List Items</h2>
+                <ul>
+                    {listItem}
+                </ul>
+            </div>
+        }
+
+        ReactDOM.render(<List3 stationary={["Pen", "Pencil", "Eraser", "Ruler", "Divider"]}></List3>, document.getElementById("root")); 
     </script>
 </body>
 
