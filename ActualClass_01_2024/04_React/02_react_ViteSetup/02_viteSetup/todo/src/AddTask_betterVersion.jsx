@@ -4,37 +4,52 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function AddTask_betterVersion() {
+    const [taskArr, setTasks] = useState([])
 
-  const [inputValue, setInputValue] = useState("");
-  const [taskArr, setTasks] = useState([])
+    const addTask = (inputValue) => {
+        const newTask = inputValue;
+        let newTaskArr = [...taskArr, newTask]
+        setTasks(newTaskArr);
+    }
 
-  const handleUserInput = (event) => {
-    setInputValue(event.target.value);
-  }
+    return (
+        <>
+            <InputBox addTask={addTask}></InputBox>
+            <List taskArr={taskArr}></List>
+        </>
+    )
+}
 
-  const addTask = () => {
-    const newTask = inputValue;
-    let newTaskArr = [...taskArr, newTask]
-    setTasks(newTaskArr);
-  }
+function InputBox(props) {
+    const [inputValue, setInputValue] = useState("");
 
-  return (
-    <>
-      <div className="inputBox">
+    const handleUserInput = (event) => {
+        setInputValue(event.target.value);
+    }
+
+    const addTaskToChild = () => {
+        props.addTask(inputValue);
+        setInputValue("");
+    }
+
+
+    return (<div className="inputBox">
         <input type="text" value={inputValue} onChange={handleUserInput}></input>
-        <button onClick={addTask}>Add task</button>
-      </div>
-      <div className="list">
+        <button onClick={addTaskToChild}>Add task</button>
+    </div>);
+
+}
+
+function List(props) {
+    return (<div className="list">
         <ul>
-          {
-            taskArr.map((task) => {
-              return <li>{task}</li>
-            })
-          }
+            {
+                props.taskArr.map((task) => {
+                    return <li>{task}</li>
+                })
+            }
         </ul>
-      </div>
-    </>
-  )
+    </div>)
 }
 
 export default AddTask_betterVersion
