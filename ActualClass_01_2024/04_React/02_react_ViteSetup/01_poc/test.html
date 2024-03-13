@@ -1,3 +1,5 @@
+//Vishal
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,17 +24,18 @@
 
     <script type="text/babel">
 
+    const [message, setMessage] = React.useState("");
         function UserInput() {
-            const [message, setMessage] = React.useState("");
+            const handleChange = (e) => {
+                setMessage(e.target.value);
 
-            const handleChange = (event) => {
-                setMessage(event.target.value);
-                console.log("value is: ", event.target.value)
             }
 
             return (
                 <div>
-                    <input type="text" id="message" onChange={handleChange} />
+                    <input type="text" id="message" onChange={handleChange}
+                        value={message}
+                        />
                     <h2>Message: {message}</h2>
                 </div>
             )
