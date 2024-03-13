@@ -31,8 +31,9 @@
 
     <script type="text/babel">
 
-        function Counter() {
-            const [count, setCount] = React.useState(0);
+        function Counter(props) {
+            const {intialValue, counterNumber} = props;
+            const [count, setCount] = React.useState(intialValue);
 
             const increment = () => {
                 setCount(count + 1);
@@ -43,19 +44,18 @@
             }
 
             return <div class="counter">
-                <h2>Counter Number: x </h2>
+                <h2>Counter Number: {counterNumber} </h2>
                 <button onClick={increment}>+</button>
                 <p>{count}</p>
                 <button onClick={decrement}>-</button>
             </div>
-
         }
 
         function CounterParent() {
             return <div>
-                <Counter />
-                <Counter />
-                <Counter />
+                <Counter intialValue={3} counterNumber={1}></Counter>
+                <Counter intialValue={5} counterNumber={2}></Counter>
+                <Counter intialValue={7} counterNumber={3}></Counter>
             </div>
         }
 
