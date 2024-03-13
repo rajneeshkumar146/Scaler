@@ -1,4 +1,6 @@
-//Vishal
+name:selvakumar
+
+code:
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,31 +19,58 @@
 
     <!-- transpiler -> JSX -> into javascript -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style>
+        .counter {
+            margin-top: 2rem;
+            border-bottom: 2px solid gray;
+            padding-bottom: 1rem;
+        }
+    </style>
 </head>
 
 <body>
     <div id="root"></div>
 
+
     <script type="text/babel">
 
-    const [message, setMessage] = React.useState("");
-        function UserInput() {
-            const handleChange = (e) => {
-                setMessage(e.target.value);
+        function Counter() {
+            const [count, setCount] = React.useState(0);
 
+            const increment = () => {
+                setCount(count + 1);
+            }
+
+            const decrement = () => {
+                setCount(count - 1);
+            }
+            const [inputNumber, setinputNumber] = React.useState(0);
+            
+            const handleChange = (event) => {
+            	setinputNumber(event.target.value);
+            }
+            
+            const updateCounter = () => {
+            	setCount(parseInt(inputNumber);
             }
 
             return (
                 <div>
-                    <input type="text" id="message" onChange={handleChange}
-                        value={message}
-                        />
-                    <h2>Message: {message}</h2>
-                </div>
-            )
+                    <div class="counter">
+                        <input type="number" id="number" onChange={handleChange} />
+                        <button onClick={updateCounter}>set </button>
+                    </div>
+
+                    <div class="counter">
+                        <button onClick={increment}>+</button>
+                        <p>{count}</p>
+                        <button onClick={decrement}>-</button>
+                    </div>
+                </div>)
         }
 
-        ReactDOM.render(<UserInput />, document.getElementById("root"));
+        ReactDOM.render(<Counter />, document.getElementById("root"));
 
     </script>
 

@@ -32,6 +32,7 @@
     <script type="text/babel">
 
         function Counter() {
+            let userInputValue = 0;
             const [count, setCount] = React.useState(0);
 
             const increment = () => {
@@ -42,15 +43,19 @@
                 setCount(count - 1);
             }
 
-            const handleChange = (event) => {
+            const handleInput = (event) => {
+                userInputValue = parseInt(event.target.value);
+            }
 
+            const handleSetInput = () => {
+                setCount(userInputValue);
             }
 
             return (
                 <div>
                     <div class="counter">
-                        <input type="number" id="number" onChange={handleChange} />
-                        <button>Set</button>
+                        <input type="number" id="number" onChange={handleInput} />
+                        <button onClick={handleSetInput}>Set</button>
                     </div>
 
                     <div class="counter">
