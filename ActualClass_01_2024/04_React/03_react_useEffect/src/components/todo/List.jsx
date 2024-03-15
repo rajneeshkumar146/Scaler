@@ -1,14 +1,15 @@
 import React from 'react'
 
-function List(listItemsProps) {
-    const { listItems } = listItemsProps;
+function List(listItemsAndEventProps) {
+    const { listItems, handleDeleteListItem } = listItemsAndEventProps;
+    
     return (
         <>
             <div className="list">
                 <ul>
                     {
                         listItems.map((listItem, idx) => {
-                            return <li key={idx}>{listItem}</li>
+                            return <li key={idx} onClick={() => handleDeleteListItem(idx)}>{listItem}</li>
                         })
                     }
                 </ul>

@@ -10,11 +10,20 @@ function HandleAllToDo() {
         setListItems(newListItems);
     }
 
+    const handleDeleteListItem = (idxOfItemGetDeleted) => {
+        const filteredListItem = listItems.filter((listItem, cidx) => {
+            return cidx != idxOfItemGetDeleted;
+        });
+
+        console.log("That item is going to be deleted: " + listItems[idxOfItemGetDeleted]);
+        setListItems(filteredListItem);
+    }
+
     return (
         <>
             <div>
                 <InputBox addListItem={addListItem}></InputBox>
-                <List listItems={listItems}></List>
+                <List listItems={listItems} handleDeleteListItem={handleDeleteListItem}></List>
             </div>
         </>
     )
