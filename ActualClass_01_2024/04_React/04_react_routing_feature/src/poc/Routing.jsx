@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 
 function Routing() {
   return (
@@ -31,7 +31,9 @@ function Home() {
 }
 
 function User(props){
-  console.log(props);
+  let parms = useParams();
+  console.log(parms);
+  // https://fakestoreapi.com/users/${parms.id}
 }
 
 function About() {
