@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route, Link, useParams, Navigate } from "react-router-dom";
 
 function Routing() {
   return (
@@ -20,6 +20,7 @@ function Routing() {
       <Routes>
         <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
         <Route path="/home/" element={<Home></Home>}></Route>
+        <Route path="/house/" element={<Navigate to="/home" />}></Route>
         <Route path="/about/*" element={<About></About>}></Route>
         <Route path="/user/:id" element={<User></User>}></Route>
       </Routes>
@@ -95,5 +96,13 @@ function Company() {
 function Founder() {
   return <h3>We are nice people, please invest in our company.</h3>
 }
+
+/***
+ * 1. link ->  it is done.
+ * 2. template route / Dynamic Route -> Done
+ * 3. redirect routes
+ * 4. Nested Routes
+ * 
+ */
 
 export default Routing

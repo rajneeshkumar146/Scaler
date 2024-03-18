@@ -8,7 +8,8 @@ import Routing from './poc/Routing.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routing></Routing>
+      {/* <Routing></Routing> */}
+      <App />
     </BrowserRouter>
 
   </React.StrictMode>,
