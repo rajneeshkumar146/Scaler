@@ -1,4 +1,6 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route, Link, useParams } from "react-router-dom";
 
 function Routing() {
@@ -18,7 +20,6 @@ function Routing() {
       <Routes>
         <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
         <Route path="/home/" element={<Home></Home>}></Route>
-        <Route path="/about/" element={<About></About>}></Route>
         <Route path="/about/*" element={<About></About>}></Route>
         <Route path="/user/:id" element={<User></User>}></Route>
       </Routes>
@@ -30,10 +31,40 @@ function Home() {
   return <h3>I am home</h3>
 }
 
-function User(props){
+function User(props) {
   let parms = useParams();
-  console.log(parms);
+  // console.log(parms);
   // https://fakestoreapi.com/users/${parms.id}
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    (async function () {
+      const response = await fetch(`https://fakestoreapi.com/users/${parms.id}`);
+      const userData = await response.json();
+
+      setUser(userData);
+    })();
+  }, []);
+
+
+  return (
+    <>
+      {
+        user === null ?
+          <h3>....Loading</h3> :
+          <>
+            <h4>User Name: {user.username}</h4>
+            <h4>User Email: {user.email}</h4>
+            <h4>User Phone Number: {user.phone}</h4>
+          </>
+
+      }
+
+    </>
+  )
+
+
 }
 
 function About() {
