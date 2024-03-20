@@ -3,8 +3,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import basicOps from './utility/basicOps';
 import Categories from './Categories';
+import ProductList from './ProductList';
 
 function Home() {
     const [products, setProduct] = useState(null);
@@ -15,6 +18,9 @@ function Home() {
     const [sortDir, setSortDir] = useState(0);
 
     const [currCategories, setCurrCategories] = useState("All Categories");
+
+    const [pageSize, setPageSize] = useState(4);
+    const [pageNum, setPageNum] = useState(1);
 
     useEffect(() => {
         (async function () {
@@ -36,7 +42,9 @@ function Home() {
 
     }, []);
 
-    let modifiedArray = basicOps(products, searchTerm, sortDir, currCategories);
+    let object = basicOps(products, searchTerm, sortDir, currCategories, pageNum, pageSize);
+    let modifiedArray = object.modifiedArray != null ? object.modifiedArray : [];
+    let totalPages = object.totalPages;
 
     return (
         <>
@@ -49,7 +57,7 @@ function Home() {
                         onChange={(e) => { setSearchTerm(e.target.value) }}
                     ></input>
 
-                    <div>
+                    <div className="icon_container">
                         <ArrowCircleUpIcon
                             style={{ color: "white" }}
                             fontSize="large"
@@ -75,24 +83,36 @@ function Home() {
             </header>
 
             <main className="product_wrapper">
-                {
-                    modifiedArray === null ? <h3>...Loadig</h3> :
-                        <>
-                            {modifiedArray.map((product) => {
-                                return (<div className='product'>
-                                    <img src={product.image} alt="" className='product_image'></img>
-                                    <div className='product_meta'>
-                                        <p className="product_title">Title: {product.title}</p>
-                                        <p className="price">Price: {product.price}</p>
-                                    </div>
-
-
-                                </div>)
-
-                            })}
-                        </>
-                }
+                <ProductList productList={modifiedArray} />
             </main>
+
+
+            <div className="pagination">
+                <button
+                    onClick={() => {
+                        if (pageNum == 1) {
+                            return;
+                        }
+                        setPageNum((pageNum) => pageNum - 1);
+                    }}
+                    disabled={pageNum == 1 ? true : false}
+                >
+                    <KeyboardArrowLeftIcon fontSize="large" />
+                </button>
+                <div className="pageNum">{pageNum}</div>
+                <button
+                    onClick={() => {
+                        if (pageNum == totalPages) {
+                            return;
+                        }
+                        setPageNum((pageNum) => pageNum + 1);
+                    }}
+                    disabled={pageNum == totalPages ? true : false}
+                >
+                    <KeyboardArrowRightIcon fontSize="large" />
+                </button>
+
+            </div>
         </>
 
     )

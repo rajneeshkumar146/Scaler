@@ -37,27 +37,42 @@ const categorization = (arrayOfProducts, currCategories) => {
     let modifiedArray = arrayOfProducts;
     if (currCategories.localeCompare("All Categories") != 0) {
         modifiedArray = modifiedArray.filter((product) => {
-            return product.category === currCategories;
+            return product.category == currCategories;
         })
     }
 
     return modifiedArray;
 }
 
-export default function basicOps(arrayOfProducts, searchTerm, sortDir, currCategories) {
+const pagination = (arrayOfProducts, pageNum, pageSize) => {
+    let modifiedArray = arrayOfProducts;
+    let totalPages = Math.ceil(modifiedArray.length / pageSize);
+
+    let sidx = (pageNum - 1) * pageSize;
+    let eidx = sidx + (pageSize - 1)
+
+    modifiedArray = modifiedArray.slice(sidx, eidx + 1);
+
+    return { modifiedArray, totalPages };
+}
+
+
+
+export default function basicOps(arrayOfProducts, searchTerm, sortDir, currCategories, pageNum, pageSize) {
     if (arrayOfProducts == null) {
         return [];
     }
 
     let modifiedArray = arrayOfProducts;
     /******************** Filtering products **************************/
-    modifiedArray = searchItems(arrayOfProducts, searchTerm);
+    modifiedArray = searchItems(modifiedArray, searchTerm);
 
     /******************** Sorting products ********************/
-    modifiedArray = sortingOfProducts(arrayOfProducts, sortDir);
+    modifiedArray = sortingOfProducts(modifiedArray, sortDir);
 
     /********************categorization /********************/
-    modifiedArray = categorization(arrayOfProducts, currCategories);
+    modifiedArray = categorization(modifiedArray, currCategories);
 
-    return modifiedArray;
+    /******************** Pagination *********************/
+    return pagination(modifiedArray, pageNum, pageSize)
 }
