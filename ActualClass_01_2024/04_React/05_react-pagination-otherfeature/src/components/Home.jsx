@@ -39,7 +39,6 @@ function Home() {
             const categorieData = await response.json();
             setCategories(categorieData);
         })();
-
     }, []);
 
     let object = basicOps(products, searchTerm, sortDir, currCategories, pageNum, pageSize);
@@ -54,7 +53,10 @@ function Home() {
                         className='search_input'
                         type="text"
                         value={searchTerm}
-                        onChange={(e) => { setSearchTerm(e.target.value) }}
+                        onChange={(e) => {
+                            setSearchTerm(e.target.value)
+                            setPageNum(1)
+                        }}
                     ></input>
 
                     <div className="icon_container">
@@ -63,6 +65,7 @@ function Home() {
                             fontSize="large"
                             onClick={() => {
                                 setSortDir(1)
+                                setPageNum(1)
                             }} />
 
                         <ArrowCircleDownIcon
@@ -70,6 +73,7 @@ function Home() {
                             fontSize="large"
                             onClick={() => {
                                 setSortDir(-1)
+                                setPageNum(1)
                             }} />
 
                     </div>
@@ -78,6 +82,7 @@ function Home() {
                     <Categories
                         categories={categories}
                         setCurrCategories={setCurrCategories}
+                        setPageNum={setPageNum}
                     ></Categories>
                 </div>
             </header>
@@ -111,7 +116,6 @@ function Home() {
                 >
                     <KeyboardArrowRightIcon fontSize="large" />
                 </button>
-
             </div>
         </>
 

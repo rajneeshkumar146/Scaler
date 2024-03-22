@@ -8,6 +8,8 @@ import Product from './components/Product'
 import ProductDetails from './components/ProductDetails'
 import viteLogo from '/vite.svg'
 import './App.css'
+import User from './components/User'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/home" element={<Navigate to="/" />}></Route>
         <Route path="/product" element={<Product />}></Route>
         <Route path="/product/:id" element={<ProductDetails />}></Route>
+        <Route path="/user" element={<User />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Categories(props) {
-    const { categories, setCurrCategories} = props;
+    const { categories, setCurrCategories, setPageNum } = props;
 
     return (
         <>
@@ -9,6 +9,7 @@ function Categories(props) {
                 className='category_option'
                 onClick={() => {
                     setCurrCategories("All Categories");
+                    setPageNum(1)
                 }}
             >All Categories</button>
 
@@ -18,6 +19,7 @@ function Categories(props) {
                         className='category_option'
                         onClick={() => {
                             setCurrCategories(category);
+                            setPageNum(1)
                         }}
                     >
                         {category}
