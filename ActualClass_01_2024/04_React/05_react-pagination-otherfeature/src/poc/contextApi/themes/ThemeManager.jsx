@@ -5,11 +5,11 @@ import Footer from './Footer'
 import Header from './Header'
 
 // 1
-const ThemeWrapper = React.createContext();
+export const ThemeWrapper = React.createContext();
 function ThemeManager() {
     const [CurrTheme, setCurrTheme] = useState("light");
     const toggleTheme = () => {
-        const newTheme = CurrTheme.localeCompare("light") != 0 ? "dark" : "light";
+        const newTheme = CurrTheme.localeCompare("light") == 0 ? "dark" : "light";
         setCurrTheme(newTheme)
     }
     return (

@@ -8,6 +8,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import basicOps from './utility/basicOps';
 import Categories from './Categories';
 import ProductList from './ProductList';
+import { usePaginationContext } from './contexts/PaginationContext';
 
 function Home() {
     const [products, setProduct] = useState(null);
@@ -19,8 +20,7 @@ function Home() {
 
     const [currCategories, setCurrCategories] = useState("All Categories");
 
-    const [pageSize, setPageSize] = useState(4);
-    const [pageNum, setPageNum] = useState(1);
+    const { pageSize, pageNum, setPageSize, setPageNum } = usePaginationContext();
 
     useEffect(() => {
         (async function () {
@@ -82,7 +82,6 @@ function Home() {
                     <Categories
                         categories={categories}
                         setCurrCategories={setCurrCategories}
-                        setPageNum={setPageNum}
                     ></Categories>
                 </div>
             </header>
