@@ -1,19 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import TodoSlice from '../../redux/TodoSlice';
 
 const actions = TodoSlice.actions;
 function TodoRedux() {
 
-    const ???? = useSelector((store)=> {
+    const { value, todoList } = useSelector((store) => {
         return store.todoSlice;
     })
 
+    const dispatch = useDispatch();
     const handleChange = (e) => {
-
+        dispatch(actions.setValue(e.target.value))
     }
 
     const handleAddTask = () => {
-
+        dispatch(actions.addTask(value));
     }
 
     return (
