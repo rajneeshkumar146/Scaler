@@ -4,6 +4,7 @@ import CounterSlice from "./CounterSlice";
 const store = configureStore({
     reducer: {
         counterState: CounterSlice.reducer
+        todoSlice: ????
     }
 
 });
