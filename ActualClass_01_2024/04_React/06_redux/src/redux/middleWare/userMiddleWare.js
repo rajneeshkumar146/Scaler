@@ -1,4 +1,4 @@
-useEffect(function () {
+export const fetchUserMiddleWare = () => {
     (async function () {
         try {
             setLoading(true);
@@ -12,4 +12,6 @@ useEffect(function () {
             setLoading(false);
         }
     })();
-}, []);
+}
+
+
