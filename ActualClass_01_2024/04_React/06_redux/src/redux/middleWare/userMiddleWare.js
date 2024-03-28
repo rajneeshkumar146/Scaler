@@ -1,17 +1,18 @@
-export const fetchUserMiddleWare = () => {
-    (async function () {
+import userslice from "../UserSlice";
+const action =userslice.actions;
+export const fetchUserMiddleWare =  (param) => {
+    return async (dispatch) => {
+        // input state
         try {
-            setLoading(true);
-            const resp = await fetch("https://jsonplaceholder.typicode.com/users/1");
-            const useresp = await resp.json();
-
-            setUser(useresp);
+            dispatch(action.userLoading());
+            const resp = await fetch(`https://jsonplaceholder.typicode.com/users/${param}`);
+            const user = await resp.json();
+            console.log("user", user);
+            dispatch(action.userData(user));
         } catch (err) {
-            setError(true);
-        } finally {
-            setLoading(false);
+            dispatch(action.userError());
         }
-    })();
+    }
 }
 
 

@@ -1,17 +1,40 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserMiddleWare } from '../../redux/middleWare/userMiddleWare';
+import UserSlice from '../../redux/UserSlice';
 
-function User() {
-    const [user, setUser] = useState(null);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(true);
-
+const action = UserSlice.actions;
+function UserRedux() {
+    const { user, loading, error, param } = useSelector((store) => {
+        return store.userState;
+    })
     // https://jsonplaceholder.typicode.com/users/1
 
-    useEffect(????, []);
+    const [value, setValue] = useState();
+    const dispatch = useDispatch();
+    useEffect(function () {
+        if (param != null) {
+            dispatch(fetchUserMiddleWare(param));
+        }
+    }, [param]);
 
-    const heading = <h2> User Example </h2>
+    const handleParam = () => {
+        dispatch(action.getParam(value));
+    }
+
+    const heading =
+        <>
+            <h2> User Example </h2>
+            <input type="text"
+                value={value}
+                onChange={(e) => {
+                    setValue(e.target.value)
+                }} />
+            <button onClick={handleParam}> send param</button>
+        </>
+
 
     if (loading) {
         return <>
@@ -36,4 +59,4 @@ function User() {
     </>
 }
 
-export default User
+export default UserRedux
