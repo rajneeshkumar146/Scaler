@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
-    const quantity = 12;
+    const quantity = useSelector((store) => {
+        return store.cartReducer.cartQuantity;
+    });
     return (
         <div className="navbar">
 

@@ -1,8 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import ProductList from '../components/ProductList';
 
 function Cart() {
-    const productList = [];
+    const productList = useSelector((store) => {
+        return store.cartReducer.cartProducts;
+    });
     return (
         <>
             <h2>Add to product list</h2>
