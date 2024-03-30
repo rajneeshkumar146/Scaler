@@ -1,0 +1,61 @@
+{
+  "hash": "767b4336",
+  "configHash": "77550211",
+  "lockfileHash": "cccbbaab",
+  "browserHash": "8a54ccd2",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "ee1b75d5",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "172cbd60",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "a257e33d",
+      "needsInterop": false
+    },
+    "@mui/icons-material/ArrowCircleDown": {
+      "src": "../../node_modules/@mui/icons-material/ArrowCircleDown.js",
+      "file": "@mui_icons-material_ArrowCircleDown.js",
+      "fileHash": "385d890c",
+      "needsInterop": true
+    },
+    "@mui/icons-material/ArrowCircleUp": {
+      "src": "../../node_modules/@mui/icons-material/ArrowCircleUp.js",
+      "file": "@mui_icons-material_ArrowCircleUp.js",
+      "fileHash": "70b1f119",
+      "needsInterop": true
+    },
+    "@mui/icons-material/KeyboardArrowLeft": {
+      "src": "../../node_modules/@mui/icons-material/KeyboardArrowLeft.js",
+      "file": "@mui_icons-material_KeyboardArrowLeft.js",
+      "fileHash": "6c80bdad",
+      "needsInterop": true
+    },
+    "@mui/icons-material/KeyboardArrowRight": {
+      "src": "../../node_modules/@mui/icons-material/KeyboardArrowRight.js",
+      "file": "@mui_icons-material_KeyboardArrowRight.js",
+      "fileHash": "e6b78d7f",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-KJUJBIHA": {
+      "file": "chunk-KJUJBIHA.js"
+    },
+    "chunk-DT5WW3CU": {
+      "file": "chunk-DT5WW3CU.js"
+    },
+    "chunk-W4VDMLRG": {
+      "file": "chunk-W4VDMLRG.js"
+    }
+  }
+}
