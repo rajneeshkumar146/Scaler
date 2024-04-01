@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <div class="personalInfo">
+            <label>Name</label>
+            <input type="text">
+
+            <label>Email</label>
+            <input type="email">
+
+            <label>Phone</label>
+            <input type="number">
+
+            <!-- If you want to ristrict the number to a certain digit use patern. -->
+            <input type="text" name="phoneNumber" pattern="\d{10}" maxlength="10" title="Exter a 10-digit phone number">
+
+            <label>age</label>
+            <input type="number" min="1" max="100" />
+
+            <label>Birthday</label>
+            <input tyep="date" min="1905-06-18" max="2024-03-29">
+        </div>
+
+        <div class="food">
+            <p>Food</p>
+            <label>Apple</label>
+            <input type="checkbox" />
+
+            <label>Orange</label>
+            <input type="checkbox" />
+
+            <label>Banana</label>
+            <input type="checkbox" />
+        </div>
+
+        <div class="gender">
+            <p>Gender</p>
+            <label>Male</label>
+            <input name="gender" value="male" type="radio" />
+
+            <label>Female</label>
+            <input name="gender" value="female" type="radio" />
+
+            <label>Eyecolor</label>
+            <select>
+                <option>Blue</option>
+                <option>Black</option>
+                <option>Red</option>
+            </select>
+    </form>
+    </div>
+
+
+</body>
+
+</html>
+
+<!-- 
+
+    <form>: tag defines the beginning of a form and contains the elements that make up the form, such as text fields, checkboxes, and buttons.
+
+    <input>: The <input> tag is used to create various types of form input fields. The type attribute specifies the type of input field to be displayed. Common type values include:
+
+        text: Creates a single-line text input.
+
+        password: Creates a password input field (text is masked for security).
+
+        checkbox: Creates a checkbox for binary (true/false) choices.
+
+        radio: Creates a radio button for selecting one option from a group.
+
+        submit: Creates a submit button to send the form data.
+        
+        button: Creates a generic button.
+
+        file: Allows users to upload files.
+        
+        date, email, number, and more: Various input types for specific data formats.
+
+    <label>: tag is used to associate a label with a form element, making the form more accessible and user-friendly. The for attribute of the <label> tag should match the id attribute of the form element it labels.
+
+    <select>: tag creates a dropdown list, allowing users to select one option from a list of choices. It contains one or more <option> elements.
+
+    <option>: tag defines an individual item in a <select> dropdown list. The value attribute specifies the value that will be sent to the server when the form is submitted.
+
+    <button>: acts as an input element in HTML and is used for various purposes in a form including the submission of a form. We have different types of input elements as well such as checkboxes <input type = "checkbox">, radio buttons <input type = "radio">, and other input elements as needed to gather user input
+
+
+
+
+ -->
