@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-const UserSlice = createSlice({
+const userSlice = createSlice({
     name: "userSliceDeclartion",
     initialState: {
         user: null,
@@ -21,10 +20,10 @@ const UserSlice = createSlice({
             state.loading = false;
             state.user = componentInfoObj.payload;
         },
-        setParam: (state, componentInfoObj) => {
-            state.param = componentInfoObj.payload;
+        setParam: (state, action) => {
+            state.param = action.payload;
         }
     }
 });
 
-export default UserSlice
+export default userSlice;

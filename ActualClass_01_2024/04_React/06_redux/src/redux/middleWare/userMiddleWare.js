@@ -1,18 +1,32 @@
-import userslice from "../UserSlice";
-const action =userslice.actions;
-export const fetchUserMiddleWare =  (param) => {
+// useEffect(function () {
+//     (async function () {
+//         try {
+//             setLoading(true);
+//             const resp = await fetch('https://jsonplaceholder.typicode.com/users/1');
+//             const userRes = await resp.json();
+//             setUser(userRes);
+//         } catch (err){
+//             setError(true);
+//         } finally {
+//             setLoading(false);
+//         }
+//     })()
+// }, []);
+
+import userSlice from '../userSlice';
+
+const actions = userSlice.actions;
+export const fetchUserMiddleWare = (param) => {
     return async (dispatch) => {
-        // input state
         try {
-            dispatch(action.userLoading());
+            dispatch(actions.userLoading());
             const resp = await fetch(`https://jsonplaceholder.typicode.com/users/${param}`);
-            const user = await resp.json();
-            console.log("user", user);
-            dispatch(action.userData(user));
+            const userRes = await resp.json();
+
+            console.log("userRes: ", userRes);
+            dispatch(actions.userData(userRes))
         } catch (err) {
-            dispatch(action.userError());
+            dispatch(actions.userError());
         }
     }
 }
-
-

@@ -1,15 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit"
-import CounterSlice from "./CounterSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import counterSlice from "./counterSlice";
 import TodoSlice from "./TodoSlice";
-import UserSlice from "./UserSlice";
+import userSlice from "./userSlice";
+
 import thunkMiddleWare from "redux-thunk";
+
 const store = configureStore({
     reducer: {
-        counterState: CounterSlice.reducer,
-        todoSlice: TodoSlice.reducer,
-        userState: UserSlice.reducer
+        counterState: counterSlice.reducer,
+        todoState: TodoSlice.reducer,
+        userState: userSlice.reducer
     },
-    middleware: [thunkMiddleWare]
+    middleware:[thunkMiddleWare]
 });
 
 

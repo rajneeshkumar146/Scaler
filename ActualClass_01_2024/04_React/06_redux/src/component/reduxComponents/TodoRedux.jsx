@@ -1,17 +1,17 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import TodoSlice from '../../redux/TodoSlice';
 
 const actions = TodoSlice.actions;
 function TodoRedux() {
-
-    const { value, todoList } = useSelector((store) => {
-        return store.todoSlice;
-    })
+    const {value, todoList} = useSelector((store) => {
+        return store.todoState;
+    });
 
     const dispatch = useDispatch();
     const handleChange = (e) => {
-        dispatch(actions.setValue(e.target.value))
+        const updatedValue = e.target.value;
+        dispatch(actions.setValue(updatedValue));
     }
 
     const handleAddTask = () => {
@@ -20,9 +20,9 @@ function TodoRedux() {
 
     return (
         <>
-            <h2>Todo Application</h2>
+            <h2>TODO Application</h2>
             <div style={{ display: "flex" }}>
-                <div className="inputBox">
+                <div className='inputBox'>
                     <input
                         type="text"
                         value={value}
@@ -36,9 +36,10 @@ function TodoRedux() {
                             return <li key={idx}>{task}</li>
                         })}
                     </ul>
-
                 </div>
             </div>
+
+
         </>
     )
 }
