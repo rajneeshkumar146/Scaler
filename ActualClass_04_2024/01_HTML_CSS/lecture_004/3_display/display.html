@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2 {
+        text-align: center;
+        font-family: sans-serif;
+        color: darkorange
+    }
+
+    .block .inline .inline_block {
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+
+    /* Template starts from here */
+    .block {
+        height: 200px;
+        width: 200px;
+
+        background-color: lightgreen;
+        border: 2px solid green;
+
+        padding: 20px;
+
+        margin-top: 20px;
+        margin-left: 20px;
+
+        /* display: block; */
+    }
+
+    .inline {
+        /* width ,height , margin -vertical */
+        width: 200px;
+        height: 200px;
+
+        background-color: rgb(177, 177, 69);
+        border: 2px solid red;
+
+        /* padding-left: 30px; */
+        /* padding-bottom: 200px; */
+        /* padding-top: 200px; */
+        /* padding-right: 200px; */
+        /* padding-left: 200px; */
+
+        margin-left: 30px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .inline_block {
+        height: 200px;
+        width: 200px;
+        display: inline-block;
+        background-color: lightcoral;
+        
+        border: 2px solid red;
+        
+        padding-top: 200px;
+        /* padding-bottom: 200px; */
+        
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+    <h2>hello from h2</h2>
+
+    <!-- Block element -->
+    <div class="block">Hello! Hi How are you.</div>
+    <div class="block">Hello! Hi How are you.</div>
+
+    <!-- inlineElement -> style a part of a line -->
+    <span class="inline">I am inline</span>
+    <span class="inline">I am inline</span>
+
+    <!--  inline block -->
+    <div class="inline_block">I am inline block</div>
+    <div class="inline_block">I am inline block</div>
+
+</body>
+
+</html>
