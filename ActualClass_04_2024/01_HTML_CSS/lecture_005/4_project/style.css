@@ -1,0 +1,35 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+header {
+    height: 70vh;
+    /* background-color: blue; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.849)), url("./headerbg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    /* To make it parallex effect */
+    background-attachment: fixed;
+}
+
+header {
+    padding-top: 100px;
+    padding-left: 100px;
+}
