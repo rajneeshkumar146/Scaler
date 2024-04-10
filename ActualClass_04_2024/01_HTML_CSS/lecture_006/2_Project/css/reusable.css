@@ -35,23 +35,23 @@ section {
 
 /* 1st step => flex related changes and give responsiveness. don't forget to put hover feature. */
 .container-parent {
-    /* display: flex; */
-    /* justify-content: space-around; */
-    /* flex-wrap: wrap; */
-    /* gap: 1rem */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem
 }
 
 .container {
-    /* width: 30%; */
-    /* min-width: 25rem; */
-    /* margin-bottom: 3rem; */
-    /* padding: 2rem 1.5rem; */
-    /* box-shadow: 0 10px 22px 10px rgba(27, 38, 49, 0.1); */
-    /* transition: transform 0.4s; */
+    width: 30%;
+    min-width: 25rem;
+    margin-bottom: 3rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 22px 10px rgba(27, 38, 49, 0.1);
+    transition: transform 0.4s;
 }
 
 .container:hover {
-    /* transform: scale(1.05); */
+    transform: scale(1.05);
 }
 
 
