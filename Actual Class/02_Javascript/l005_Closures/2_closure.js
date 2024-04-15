@@ -41,22 +41,22 @@
  * outer fn is not your direct parent
  * */
 
-// let iamINGEC = 200;
-// function getFirstName(firstName) {
-//     console.log("I have got your first Name");
-//     return function getLastName(lastName) {
-//         console.log("I have got Your last Name");
-//         return function greeter() {
-//             console.log(`Hi I am ${firstName} ${lastName}`);  // closure 
-//             console.log("Hi GEC", iamINGEC) // LExical scope
-//             iamINGEC++;
-//         }
-//     }
-// }
+let iamINGEC = 200;
+function getFirstName(firstName) {
+    console.log("I have got your first Name");
+    return function getLastName(lastName) {
+        console.log("I have got Your last Name");
+        return function greeter() {
+            console.log(`Hi I am ${firstName} ${lastName}`);  // closure 
+            console.log("Hi GEC", iamINGEC) // LExical scope
+            iamINGEC++;
+        }
+    }
+}
 
-// const fnNameRtrn = getFirstName("Rajneesh");
-// const lnNameRtrn = fnNameRtrn("Kumar");
-// lnNameRtrn(); // iamINGEC=201
+const fnNameRtrn = getFirstName("Rajneesh");
+const lnNameRtrn = fnNameRtrn("Kumar");
+lnNameRtrn(); // iamINGEC=201
 
 // lnNameRtrn(); // iamINGEC=202
 // lnNameRtrn(); // iamINGEC=203

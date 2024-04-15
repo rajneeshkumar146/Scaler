@@ -75,9 +75,8 @@ let fs = require("fs");
 
 /***
  * Promise
- * 1. resolve  -> promise with state resolved whatever you pass into it you that value
- * 2. reject  -> promise with state rejected whatever you pass into it as the value
- *
+ * 1. resolve  -> promise with state resolved whatever you pass into it treat as the value
+ * 2. reject  -> promise with state rejected whatever you pass into it treat as the value
  * **/
 
 // const promise = Promise.resolve("Promise is resolved with value: v");

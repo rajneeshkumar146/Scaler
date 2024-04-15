@@ -101,7 +101,7 @@ function updateUIEverySecond(countDownTime) {
 }
 
 function tranformInputs(hour, minute, second) {
-
+  return 0,0,0;
 }
 
 function updateUI_Hour_Min_Sec(hour, minute, second) {

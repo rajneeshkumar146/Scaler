@@ -12,6 +12,7 @@ let obj = {
     age: 25,
     state: "Delhi"
 }
+
 Object.defineProperty(obj, 'age', {
     value: "25",
     enumerable: false

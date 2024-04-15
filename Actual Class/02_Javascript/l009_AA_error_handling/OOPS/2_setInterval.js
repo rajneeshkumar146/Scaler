@@ -43,5 +43,5 @@ setTimeout(clearCb, 3000);
 
 
 // console:
-// interval
-// interval
+// interval:
+// interval:

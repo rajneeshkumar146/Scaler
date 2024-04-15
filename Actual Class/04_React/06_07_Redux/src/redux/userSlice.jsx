@@ -5,7 +5,7 @@ const userSlice = createSlice({
         user: null,
         error: false,
         loading: true,
-        param: 1
+        param: null
     },
     reducers: {
         userLoading: (state) => {

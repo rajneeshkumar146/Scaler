@@ -6,7 +6,7 @@
  * 2. Object.create 
  * **/
 
-/******1. Object literal **************
+/******1. Object literal ****************
  * 1. properties and methods
  * 2. Object -> as your prototype (parent)
  * ***/

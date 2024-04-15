@@ -9,7 +9,6 @@
 //     }
 
 //     this.sayHi();
-//     return this;
 // }
 
 // Person("Jasbir",27);
@@ -52,7 +51,7 @@ class SuperHuman extends Person {
 // console.log(rajneesh);
 // rajneesh.sayHi();
 
-const sudheer = new SuperHuman("sudheer", 21);
+const sudheer = SuperHuman("sudheer", 21);  // Its a function call.
 // console.log(sudheer);
 sudheer.sayHi();
 sudheer.sayBye();

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List Examples</title>
+  </head>
+  <body>
+    <form>
+      <label>Name</label>
+      <input type="text" />
+
+      <label>Email</label>
+      <input type="email" />
+
+      <label>Phone</label>
+      <input type="number"  />
+
+      <!-- If you want to restrict the number to a certain digit use pattern -->
+      <input type="text" name="phoneNumber" pattern="\d{10}" maxlength="10" title="Enter a 10-digit phone number">
+
+      <label>age</label>
+      <input type="number" min="1" max="100" />
+
+      <label>Birthday</label>
+      <input type="date" min="1905 - 06 - 18" max="2002 - 06 - 10" />
+
+      <p>Food</p>
+      <label>Apple</label>
+      <input type="checkbox" />
+      <label>Orange</label>
+      <input type="checkbox" />
+      <label>Banana</label>
+      <input type="checkbox" />
+
+      <p>Gender</p>
+      <label>Male</label>
+      <input name="gender" value="male" type="radio" />
+      <label>Female</label>
+      <input name="gender" value="female" type="radio" />
+
+      <label>Eyecolor</label>
+      <select>
+        <option>Blue</option>
+        <option>Black</option>
+        <option>Red</option>
+      </select>
+    </form>
+  </body>
+</html>

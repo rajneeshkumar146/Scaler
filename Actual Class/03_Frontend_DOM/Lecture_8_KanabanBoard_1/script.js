@@ -14,7 +14,7 @@ let isFromLocalStorage = false;
 
 if (typeof allTickets == "string") {
     allTickets = JSON.parse(allTickets);
-    console.log(allTickets);
+    // console.log(allTickets);
     populateUI();
 }
 
@@ -223,7 +223,7 @@ function deleteListner(ticketContainer, id) {
         if (deleteBtn.style.color === "red") {
             ticketContainer.remove();
 
-            let restOfTicket = allTicket.filter((ticketObject) => {
+            let restOfTicket = allTickets.filter((ticketObject) => {
                 return ticketObject.id != currentId;
             });
 

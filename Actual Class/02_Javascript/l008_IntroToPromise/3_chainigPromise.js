@@ -50,31 +50,31 @@ console.log("before");
 
 /******************* Nested then *************/
 
-// let p1 = fs.promises.readFile("./f1.txt");
-// p1.then((data1) => {
-//     console.log("My Content is: " + data1);
-//     let p2 = fs.promises.readFile("./f2.txt");
-//     p2.then((data2) => {
-//         console.log("My Content is: " + data2);
-//         let p3 = fs.promises.readFile("./f3.txt");
-//         p3.then((data3) => {
-//             console.log("My Content is: " + data3);
-//             let p4 = fs.promises.readFile("./f4.txt");
-//             p4.then((data4) => {
-//                 console.log("My Content is: " + data4);
-//             }).catch((err) => {
-//                 console.log("ohh! I hit by error: " + err);
-//             });
-//         }).catch((err) => {
-//             console.log("ohh! I hit by error: " + err);
-//         });
-//     }).catch((err) => {
-//         console.log("ohh! I hit by error: " + err);
-//     });
+let p1 = fs.promises.readFile("./f1.txt");
+p1.then((data1) => {
+    console.log("My Content is: " + data1);
+    let p2 = fs.promises.readFile("./f2.txt");
+    p2.then((data2) => {
+        console.log("My Content is: " + data2);
+        let p3 = fs.promises.readFile("./f3.txt");
+        p3.then((data3) => {
+            console.log("My Content is: " + data3);
+            let p4 = fs.promises.readFile("./f4.txt");
+            p4.then((data4) => {
+                console.log("My Content is: " + data4);
+            }).catch((err) => {
+                console.log("ohh! I hit by error: " + err);
+            });
+        }).catch((err) => {
+            console.log("ohh! I hit by error: " + err);
+        });
+    }).catch((err) => {
+        console.log("ohh! I hit by error: " + err);
+    });
 
-// }).catch((err) => {
-//     console.log("ohh! I hit by error: " + err);
-// });
+}).catch((err) => {
+    console.log("ohh! I hit by error: " + err);
+});
 
 
 /******************* chaining *********************/

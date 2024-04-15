@@ -43,22 +43,22 @@
     /*  Here 'numeric value' of flex-grow and flex-shrink represent the rate. Ex. 1x, 2x, 3x .... */
     .one {
         /* does not effect your element before there is enough space, Here 1 represent the rate of grow.  */
-        /* flex-grow: 1; */
+        flex-grow: 1;
         background-color: lightgreen;
-        flex-shrink: 2;
+        /* flex-shrink: 2; */
 
     }
 
     .two {
-        /* flex-grow: 2; */
-        flex-shrink: 1;
+        flex-grow: 2;
+        /* flex-shrink: 1; */
         background-color: lightpink;
     }
 
     .three {
         flex-grow: 1;
         background-color: lightblue;
-        /* min-width: 10rem; */
+        /* min-width: 5rem; */
     }
 </style>
 

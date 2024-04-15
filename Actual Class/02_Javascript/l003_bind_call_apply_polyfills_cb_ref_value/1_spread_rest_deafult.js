@@ -12,7 +12,6 @@
 
 // Statement 2 ---------------------------------------------------------------
 /**
-// 
  * spread operator : copies value,ref from on array to another for only first level
  * 
  * */

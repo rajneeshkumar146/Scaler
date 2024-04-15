@@ -13,20 +13,20 @@
 
 // fn();
 
-// var varName = 10;
-// /**fn def*/
-// function b() {
-//     console.log("in b", varName);
-// }
+var varName = 10;
+/**fn def*/
+function b() {
+    console.log("in b", varName);
+}
 
-// function fn() {
-//     var varName = 20;
-//     /**fn call*/
-//     b();
-//     console.log(varName);  //20
-// }
+function fn() {
+    var varName = 20;
+    /**fn call*/
+    b();
+    console.log(varName);  //20
+}
 
-// fn();
+fn();
 
 var varName = "I'm here";
 function fn(){

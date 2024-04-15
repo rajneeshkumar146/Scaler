@@ -6,6 +6,7 @@ const fs = require("fs");
 
 
 // const combinedpromise = Promise.all([promise, promise2]);
+// const combinedpromise = Promise.any([promise, promise2]);
 
 
 // combinedpromise.then(function (resultArr) {

@@ -27,20 +27,20 @@
  * 
  * **/
 
-// Promise.resolve(1)
-//     .finally((data) => {
-//         console.log("32: ", data)
-//         return Promise.resolve('error');
-//     })
-//     .catch((error) => {
-//         console.log("36: ", error)
-//         throw 'error2'
-//     })
-//     .finally((data) => {
-//         console.log("40: ", data)
-//         let rProm = Promise.resolve(41)
-//         let thenProm = rProm.then(console.log)
-//         return thenProm;
-//     })
-//     .then(console.log)
-//     .catch(console.log);
+Promise.resolve(1)
+    .finally((data) => {
+        console.log("32: ", data)
+        return Promise.resolve('error');
+    })
+    .catch((error) => {
+        console.log("36: ", error)
+        throw 'error2'
+    })
+    .finally((data) => {
+        console.log("40: ", data)
+        let rProm = Promise.resolve(41)
+        let thenProm = rProm.then(console.log)
+        return thenProm;
+    })
+    .then(console.log)
+    .catch(console.log);

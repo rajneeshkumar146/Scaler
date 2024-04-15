@@ -18,7 +18,7 @@ function UserRedux() {
         if (param != null) {
             dispatch(fetchUserMiddleWare(param));
         }
-    }, [param]);
+    },[]);
 
     const handleParams = () => {
         dispatch(actions.setParam(value));
