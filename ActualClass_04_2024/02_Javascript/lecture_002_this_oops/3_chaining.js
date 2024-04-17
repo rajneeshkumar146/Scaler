@@ -41,4 +41,6 @@ let ladder2 = {
     }
 };
 
-ladder2.up().up().up().down().showStep();
+// var thisRef = ladder2.up();
+// thisRef.showStep();
+ladder2.up().up().up().up().up().up().down().showStep();
