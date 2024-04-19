@@ -73,6 +73,15 @@ Function.prototype.myApply = function (requiredObject, arrayAsArgu) {
  * **/
 
 Function.prototype.myBind = function (requiredObject) {
+    // get your function.
+    const functionToBeInvoked = this;
 
+    return function(...args){
+        functionToBeInvoked.call(requiredObject, ...args);
+    }
 }
+
+const boundFn = cap.petersTeam.myBind(ironMan);
+boundFn(["thor", "loki", "rajneesh", "arti", "jagdish"], "Hema");
+
 
