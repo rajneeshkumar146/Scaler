@@ -15,7 +15,7 @@ let ironMan = {
 
 // borrow the method only once with defined number of param 
 // use petersTeam method -> only once 
-cap.petersTeam.call(ironMan,"thor", "loki");
+// cap.petersTeam.call(ironMan,"thor", "loki");
 
 
 /****
@@ -23,7 +23,7 @@ cap.petersTeam.call(ironMan,"thor", "loki");
  * Apply: borrow the method only once with n no number of param 
  * **/
 let membersArray = ["thor", "loki", "Rajneesh", "Sudheer", "Tapaswini"]
-cap.petersTeam.apply(ironMan, membersArray);
+// cap.petersTeam.apply(ironMan, membersArray);
 
 
 /**

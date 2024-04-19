@@ -29,7 +29,7 @@ let ironMan = {
  * polyfill of call method
  * **/
 
-Function.prototype.myCall = function(requiredObject, ...args){
+Function.prototype.myCall = function (requiredObject, ...args) {
     // get your function.
     const functionToBeInvoked = this;
 
@@ -50,7 +50,29 @@ Function.prototype.myCall = function(requiredObject, ...args){
  * polyfill of apply method
  * **/
 
-Function.prototype.myApply = function(requiredObject, arrayAsArgu){
+Function.prototype.myApply = function (requiredObject, arrayAsArgu) {
+    // get your function.
+    const functionToBeInvoked = this;
+
+    // copy your function.
+    requiredObject.tempFunction = functionToBeInvoked;
+
+    // call your function.
+    requiredObject.tempFunction(...arrayAsArgu);
+
+    // delete temp method.
+    delete requiredObject.tempFunction;
+}
+
+// cap.petersTeam.myApply(ironMan, ["thor", "loki"]);
+
+
+// Statement 4.-------------------------------------------------
+/**
+ * polyfill of bind method
+ * **/
+
+Function.prototype.myBind = function (requiredObject) {
 
 }
 
