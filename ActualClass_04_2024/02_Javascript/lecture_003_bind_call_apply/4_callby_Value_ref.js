@@ -6,8 +6,6 @@
 // console.log(arr);
 // console.log(arr2);
 
-
-
 // statement 2 ----------------------------------------------------
 function modifier(a, b) {
     console.log("13", a, b)
