@@ -64,7 +64,8 @@ Function.prototype.myApply = function (requiredObject, arrayAsArgu) {
     delete requiredObject.tempFunction;
 }
 
-// cap.petersTeam.myApply(ironMan, ["thor", "loki"]);
+cap.petersTeam.myApply(ironMan, ["thor", "loki"]);
+cap.petersTeam.apply(ironMan, ["thor", "loki"]);
 
 
 // Statement 4.-------------------------------------------------
@@ -81,7 +82,7 @@ Function.prototype.myBind = function (requiredObject) {
     }
 }
 
-const boundFn = cap.petersTeam.myBind(ironMan);
-boundFn(["thor", "loki", "rajneesh", "arti", "jagdish"], "Hema");
+// const boundFn = cap.petersTeam.myBind(ironMan);
+// boundFn(["thor", "loki", "rajneesh", "arti", "jagdish"], "Hema");
 
 
