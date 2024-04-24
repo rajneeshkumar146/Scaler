@@ -31,19 +31,45 @@
 
 
 /***************Private variables******/
+// function createEvenStack() {
+//     return {
+//         items:[],
+//         push(item) {
+//             if (item % 2 == 0) {
+//                 console.log("Is pushed");
+//                 this.items.push(item);
+//             }else {
+//                 console.log("Please input even value");
+//             }
+//         },
+//         pop() {  
+//             return this.items.pop();
+//         }
+//     };
+// }
+
+// const stack = createEvenStack();
+// stack.push(10);
+// stack.push(5);
+// console.log("pop ele: ", stack.pop());
+// console.log(stack.items);
+// stack.items = [10, 100, 1000]; // prevent this behaviour
+// console.log(stack.items);
+
+
 function createEvenStack() {
+    let items = [];
     return {
-        items:[],
         push(item) {
             if (item % 2 == 0) {
                 console.log("Is pushed");
-                this.items.push(item);
+                items.push(item);
             }else {
                 console.log("Please input even value");
             }
         },
         pop() {  
-            return this.items.pop();
+            return items.pop();
         }
     };
 }
@@ -51,7 +77,12 @@ function createEvenStack() {
 const stack = createEvenStack();
 stack.push(10);
 stack.push(5);
+stack.push(20);
 console.log("pop ele: ", stack.pop());
-console.log(stack.items);
+console.log(stack.items);    // Undefined
 stack.items = [10, 100, 1000]; // prevent this behaviour
-console.log(stack.items);
+console.log(stack.items);   // because of line no 83
+stack.push(30);
+console.log("pop ele: ", stack.pop());
+console.log("pop ele: ", stack.pop());
+
