@@ -27,12 +27,12 @@ function sum(val) {
         return 0;
     } else {
         let res = val;
-        return function smallerSunHelperMethod(val) {
+        return function smallerSumHelperMethod(val) {
             if (val === undefined) {
                 return res;
             } else {
                 res += val;
-                return smallerSunHelperMethod;
+                return smallerSumHelperMethod;
             }
         }
     }
