@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Tasks, Microtasks, call Stack , UIRenders</h1>
+
+    <ol>
+        <!-- synchronous code  -->
+        <!-- always the highest prority -->
+        <!-- Asynchrounous code -->
+        <!-- 1. Tasks Queue: cb from any asynchronous callbacke based fn  and event listener -->
+        <!-- 2. UI render : requestAnimationframe-> help you to execute js just before rendering-->
+        <!--3. MicroTask queue : callbacks of promise are are enqued  -->
+    </ol>
+</body>
+
+<script>
+
+    console.log('A sync stack');
+
+    /********to executes a piece of code before redendering*****/
+    requestAnimationFrame(function () {
+        console.log('B request animation Frame');
+    });
+
+    /*****callback queue/ Task queue***/
+    setTimeout(() => {
+        console.log("C task queue")
+    }, 0);
+
+    /***fn will go into microtask queue*/
+    queueMicrotask(function () {
+        console.log('D microtask');
+    });
+
+    Promise.resolve().then(function () {
+        console.log("E microtask queue");
+    }).then(function () {
+        console.log("F microtask queue");
+    });
+
+    console.log('G sync stack');
+
+    //  synchronous code >   Microtask > (callback / TaskQueue) ~= RequestanimationFrame
+
+    /** Some key concepts related to JavaScript execution and rendering in the browser. Let me explain each of them in more detail:
+    
+    1. **Tasks Queue:** The tasks queue, often referred to as the "task queue" or "callback queue," is a part of the event loop
+         in JavaScript. It's responsible for managing asynchronous code execution. When asynchronous events like I/O operations, 
+         timers (e.g., `setTimeout`), or event listeners (e.g., click events) have their callback functions ready to run, those 
+         callbacks are placed in the tasks queue.
+    
+       The event loop continuously checks if the call stack is empty. If it is, it takes the next task from the tasks queue 
+       and pushes it onto the call stack for execution.
+    
+    2. **Microtasks Queue:** The microtasks queue is a separate queue that handles microtasks, which have a higher priority 
+        than tasks. Promises and certain other asynchronous operations, like `process.nextTick` in Node.js or 
+        `MutationObserver` in the browser, schedule callbacks to run as microtasks. Microtasks are executed before the next 
+        rendering, and they are processed entirely before tasks.
+    
+       This means that if there are microtasks in the microtasks queue, they will be executed before any tasks in the 
+       tasks queue.
+    
+    3. **Call Stack:** The call stack is a data structure that keeps track of function calls in a JavaScript program. It 
+        follows the Last-In-First-Out (LIFO) principle. When a function is called, it's pushed onto the call stack, 
+        and when it returns or completes, it's popped off the stack. This stack determines the order in which synchronous 
+        code is executed.
+    
+       For asynchronous code, when the call stack is empty, the event loop checks the tasks queue for pending tasks 
+       and executes them.
+    
+    4. **UI Rendering:** The browser's rendering engine is responsible for rendering web pages. The rendering process 
+        involves various steps, including layout, paint, and composite. The browser tries to render at a consistent 
+        frame rate, typically 60 frames per second (FPS) for smooth animations.
+    **/
+</script>
+
+</html>
