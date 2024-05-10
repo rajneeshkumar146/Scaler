@@ -87,7 +87,7 @@ const executorFn = (resolve, reject) => {
 
     setTimeout(function () {
         reject("Hey there I'm rejected.");
-    }, 2000);
+    }, 3000);
 }
 
 // ***************** usage of your custom *****************
