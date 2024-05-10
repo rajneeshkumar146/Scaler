@@ -1,5 +1,31 @@
 Promise.myPromiseAll = function (arrOfPromises) {
+    return new Promise(function (resolve, reject) {
+        if (!Array.isArray(arrOfPromises)) {
+            reject("Expected a array of Promise.")
+            return;
+        }
 
+        let unresolvedPromise = arrOfPromises.length;
+        const resolvedPromiseRes = [];
+
+        if (unresolvedPromise === 0) {
+            resolve(resolvedPromiseRes);
+        }
+
+        arrOfPromises.forEach(async (promise) => {
+            try {
+                const value = await promise;
+                resolvedPromiseRes.push(value);
+
+                unresolvedPromise--;
+                if (unresolvedPromise === 0) {
+                    resolve(resolvedPromiseRes);
+                }
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
 }
 
 
