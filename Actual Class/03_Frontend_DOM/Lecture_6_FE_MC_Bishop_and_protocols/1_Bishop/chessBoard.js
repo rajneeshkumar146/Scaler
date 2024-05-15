@@ -57,7 +57,6 @@ function mouseLeave(table, boxArr){
             boxArr[i].classList.remove("yellow");
         }
     });
-
 }
 
 function colorMyPath(curr_row, curr_col, N, M, storageOfPossibleMoves) {
