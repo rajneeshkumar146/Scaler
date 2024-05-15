@@ -23,13 +23,14 @@
 
 
     <script type="text/babel">
+        let stationary = ["Pen", "Pencil", "Eraser", "Ruler"];
+        function LIST(){
 
-        function HELLO(props) {
-            let { age, occupation } = props;
-            return <h1>Hello My Name is Rajneesh, and my age: {age} and working as {occupation}</h1>
         }
 
-        ReactDOM.render(<HELLO age={25} occupation={"Mentor and SDE"}></HELLO>, document.getElementById("root"));
+        ReactDOM.render(<LIST/>, document.getElementById("root"));
+
+      
     </script>
 
 

@@ -23,13 +23,28 @@
 
 
     <script type="text/babel">
-
         function HELLO(props) {
-            let { age, occupation } = props;
-            return <h1>Hello My Name is Rajneesh, and my age: {age} and working as {occupation}</h1>
+            let { name, age } = props;
+            return <h1>Hello {name} Thanks Babel is {age} old</h1>
         }
 
-        ReactDOM.render(<HELLO age={25} occupation={"Mentor and SDE"}></HELLO>, document.getElementById("root"));
+        function BYE() {
+            return <p>Bye Component</p>
+        }
+
+        function HELLOPARENT() {
+            return <div>
+                <HELLO name={"Gibran"} age={10}></HELLO>
+                <HELLO name={"Rajneesh"} age={25}></HELLO>
+                <HELLO name={"Jagdish"} age={21}></HELLO>
+                <BYE />
+                <BYE />
+                <BYE />
+                <BYE />
+            </div>
+        }
+
+        ReactDOM.render(<HELLOPARENT />, document.getElementById("root"));
     </script>
 
 
