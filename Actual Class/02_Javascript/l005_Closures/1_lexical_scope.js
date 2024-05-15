@@ -4,14 +4,14 @@
  * as well as as any variable deaclred outside 
  * */
 
-// var x = 10;
-// function fn() {
-//     /** you are taking the value from the current/local scope */
-//     // var x = 20;
-//     console.log("c Value of x is ", x);
-// }
+var x = 10;
+function fn() {
+    /** you are taking the value from the current/local scope */
+    // var x = 20;
+    console.log("c Value of x is ", x);
+}
 
-// fn();
+fn();
 
 var varName = 10;
 /**fn def*/

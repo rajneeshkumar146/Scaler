@@ -43,20 +43,20 @@
  * q1-3 : fn is getting diffrent values of i because here
  * block scope is different foe every iteration
 */
-function outer() {
-    /**
-     * arrfns block scope refer to -> functions
-     * */
-    let arrFn = [];
-    for (let i = 0; i < 3; i++) {
-        arrFn.push(function fn() {
-            i++;
-            console.log(i);
-        })
-    }
-    return arrFn;
-}
-let arrFn = outer();
-arrFn[0]();
-arrFn[1]();
-arrFn[2]();
+// function outer() {
+//     /**
+//      * arrfns block scope refer to -> functions
+//      * */
+//     let arrFn = [];
+//     for (let i = 0; i < 3; i++) {
+//         arrFn.push(function fn() {
+//             i++;
+//             console.log(i);
+//         })
+//     }
+//     return arrFn;
+// }
+// let arrFn = outer();
+// arrFn[0]();
+// arrFn[1]();
+// arrFn[2]();
