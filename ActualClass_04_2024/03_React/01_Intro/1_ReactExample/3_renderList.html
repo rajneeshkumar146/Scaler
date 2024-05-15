@@ -21,16 +21,24 @@
     <!-- Whole application lives here. -->
     <div id="root"></div>
 
-
     <script type="text/babel">
         let stationary = ["Pen", "Pencil", "Eraser", "Ruler"];
-        function LIST(){
-
+        function LIST() {
+            return <div>
+                <h2>List Items</h2>
+                <ul>
+                    {
+                        stationary.map((item) => {
+                            return <li>{item}</li>
+                        })
+                    }
+                </ul>
+            </div>
         }
 
-        ReactDOM.render(<LIST/>, document.getElementById("root"));
+        ReactDOM.render(<LIST />, document.getElementById("root"));
 
-      
+
     </script>
 
 
