@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- algorithm to efficiently manipulate your UI -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+    <!-- React DOM  -> uses react to update the DOM-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- transpiler -> JSX -> into javascript -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <title>Counter</title>
+
+    <style>
+        .counter {
+            margin-top: 2rem;
+            border-bottom: 2px solid gray;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function Counter() {
+            let useInputValue = 0;
+            const [count, setCount] = React.useState(0);
+
+            const increment = () => {
+                setCount(count + 1);
+            }
+
+            const decrement = () => {
+                setCount(count - 1);
+            }
+
+            const handleInput = (event) => {
+                useInputValue = parseInt(event.target.value);
+            }
+
+            const handleSetInput = () => {
+                setCount(useInputValue);
+            }
+
+            return <div>
+                <div class="counter">
+                    <input type="number" id="number" onChange={handleInput} />
+                    <button onClick={handleSetInput}>Set</button>
+                </div>
+
+                <div class="counter">
+                    <button onClick={increment}>+</button>
+                    <p>{count}</p>
+                    <button onClick={decrement}>-</button>
+                </div>
+            </div>
+        }
+
+        ReactDOM.render(<Counter />, document.getElementById("root"));
+    </script>
+</body>
+
+</html>
