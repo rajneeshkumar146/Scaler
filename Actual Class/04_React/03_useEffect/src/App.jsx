@@ -8,10 +8,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    // <HandleAllToDo></HandleAllToDo>
+    <HandleAllToDo></HandleAllToDo>
     // <GetData></GetData>
     // <UseEffectExamples></UseEffectExamples>
-    <UseEffectCleanupExamples></UseEffectCleanupExamples>
+    // <UseEffectCleanupExamples></UseEffectCleanupExamples>
   )
 }
 
