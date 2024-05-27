@@ -1,4 +1,6 @@
 import React from 'react'
+import { useContext } from 'react';
+import { ThemeWrapper } from './ThemeManager';
 import "./themeManager.css";
 
 function Footer() {
@@ -16,7 +18,9 @@ function Footer() {
 
 function Option() {
     // 3
-    return <div className={"dark"}>Option</div>
+    const {currTheme} = useContext(ThemeWrapper);
+    // console.log("Rajneesh1: ", currTheme);
+    return <div className={currTheme}>Option</div>
 }
 
 export default Footer

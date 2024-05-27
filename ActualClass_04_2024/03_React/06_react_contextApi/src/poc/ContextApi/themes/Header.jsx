@@ -1,4 +1,6 @@
 import React from 'react'
+import { useContext } from 'react';
+import { ThemeWrapper } from './ThemeManager';
 import "./themeManager.css";
 function Header() {
     return (
@@ -14,7 +16,8 @@ function Header() {
 }
 
 function Option() {
-    return <div className={"dark"}>Option</div>
+    const {currTheme} = useContext(ThemeWrapper);
+    return <div className={currTheme}>Option</div>
 }
 
 export default Header
