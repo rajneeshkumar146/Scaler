@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
@@ -8,11 +7,12 @@ import ProductDetails from './components/ProductDetails'
 import './App.css'
 import User from './components/User'
 import Cart from './components/Cart'
+import PaginationProvider from './components/contexts/PaginationContext'
 
 function App() {
 
   return (
-    <>
+    <PaginationProvider>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -23,7 +23,7 @@ function App() {
         <Route path="/user" element={<User />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
-    </>
+    </PaginationProvider>
   )
 }
 

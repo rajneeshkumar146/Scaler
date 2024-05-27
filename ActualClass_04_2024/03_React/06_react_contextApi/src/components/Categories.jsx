@@ -1,13 +1,16 @@
 import React from 'react'
+import { usePaginationContext } from './contexts/PaginationContext';
 
 function Categories(props) {
     const { CategoryList, setCurrentCategory } = props;
+    const { setPageNumber } = usePaginationContext();
     return (
         <>
             <button
                 className='category_option'
                 onClick={() => {
-                    setCurrentCategory("All Categories")
+                    setCurrentCategory("All Categories");
+                    setPageNumber(1);
                 }}
             >All Categories</button>
             {
@@ -15,7 +18,8 @@ function Categories(props) {
                     return <button
                         className='category_option'
                         onClick={() => {
-                            setCurrentCategory(category)
+                            setCurrentCategory(category);
+                            setPageNumber(1);
                         }}
                     >
                         {category}

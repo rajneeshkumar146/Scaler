@@ -8,6 +8,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import basicOps from './utility/basicOps';
 import ProductList from './ProductList';
 import Categories from './Categories';
+import { usePaginationContext } from './contexts/PaginationContext';
 
 function Home() {
 
@@ -29,12 +30,7 @@ function Home() {
   /**************************** currcategory : category group you result **********************************/
   const [currentCategory, setCurrentCategory] = useState(["All Categories"]);
 
-  const [pageSize, setPageSize] = useState(4);
-  const [pageNumber, setPageNumber] = useState(1);
-
-
-
-
+  const { pageSize, pageNumber, setPageSize, setPageNumber } = usePaginationContext();
 
   // we shpould move all these useEffcet in a useEffect file
   useEffect(() => {
@@ -123,7 +119,7 @@ function Home() {
             }
             setPageNumber((pageNumber) => pageNumber + 1);
           }}
-          
+
           disabled={pageNumber == totalPages ? true : false}
         >
           <ChevronRightIcon fontSize='large'></ChevronRightIcon>
