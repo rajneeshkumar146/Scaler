@@ -11,9 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       {/* <Routing></Routing> */}
-      <App />
+      {/* <App /> */}
       {/* <Context /> */}
-      {/* <ThemeManager /> */}
+      <ThemeManager />
     </BrowserRouter>
 
   </React.StrictMode>,
