@@ -1,8 +1,11 @@
 
 const toolBoxPriorityContainer = document.querySelector(".toolbox-priority-cont");
+const uid = new ShortUniqueId();
+
+const addBtn = document.querySelector(".add-btn");
+const removeBtn = document.querySelector(".remove-btn");
 
 const mainContainer = document.querySelector(".main_cont");
-const ticketColorElements = mainContainer.querySelectorAll(".ticket-color");
 
 //========================= Change color ===========================
 
@@ -48,13 +51,144 @@ const filterTickets = function () {
 }
 
 //========================= Lock and Unlock ===========================
-const addLockAndUnlock = function () {
+const addLockAndUnlock = function (ticketArea, lockBtn) {
+    lockBtn.addEventListener("click", () => {
+        let isLocked = lockBtn.children[0].classList.contains("fa-lock");
+        if (isLocked) {
+            lockBtn.children[0].classList.remove("fa-lock");
+            lockBtn.children[0].classList.add("fa-lock-open");
+            ticketArea.setAttribute("contenteditable", true);
+        } else {
+            lockBtn.children[0].classList.remove("fa-lock-open");
+            lockBtn.children[0].classList.add("fa-lock");
+            ticketArea.setAttribute("contenteditable", false);
+        }
+    });
+}
+
+//========================= Delete feature ===========================
+
+const deleteListner = function (ticketColorElement) {
+    ticketColorElement.addEventListener("click", () => {
+        if (removeBtn.style.color === "red") {
+            ticketColorElement.remove();
+        }
+    });
 
 }
 
+const deleteBtnEventListener = function () {
+    removeBtn.addEventListener("click", () => {
+        if (removeBtn.style.color != "red") {
+            removeBtn.style.color = "red";
+        } else {
+            removeBtn.style.color = "";
+        }
+    });
+}
+
+//========================= Modal and ticket creation ===========================
+const modalCreation = function () {
+    const modal = document.querySelector(".modal-cont");
+    const priorityColorSetModal = modal.querySelector(".priority-color-cont");
+    const priorityColorArrayOfModal = modal.querySelectorAll(".priority-color");
+
+    addBtnEventListner(modal);
+    deleteBtnEventListener();
+    pickColorToCreateTicket(priorityColorSetModal, priorityColorArrayOfModal);
+    createTicketWithContentAndActiveColor(modal, priorityColorArrayOfModal);
+}
+
+const addBtnEventListner = function (modal) {
+    addBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+    })
+}
+
+const pickColorToCreateTicket = function (priorityColorSetModal, priorityColorArrayOfModal) {
+    priorityColorSetModal.addEventListener("click", (event) => {
+        if (event.target === event.currentTarget) {
+            return;
+        }
+
+        resetActiveStatusOfColorModal(priorityColorArrayOfModal);
+        event.target.classList.add("active");
+    })
+}
+
+const createTicketWithContentAndActiveColor = function (modal, priorityColorArrayOfModal) {
+    modal.addEventListener("keypress", (event) => {
+        if (event.key != "Enter") {
+            return;
+        }
+
+        let textArea = modal.querySelector(".textarea-cont");
+        let writtenContent = textArea.value;
+
+        let selectedColor = getSelectedColorOfModal(priorityColorArrayOfModal);
+        let uniqueId = uid();
+        let isLocked = true;
+
+        buildTicketWithAllFeature(writtenContent, selectedColor, isLocked, uniqueId);
+
+        textArea.value = "";
+        modal.style.display = "none";
+        resetActiveStatusOfColorModal(priorityColorArrayOfModal);
+    })
+}
+
+const buildTicketWithAllFeature = function (writtenContent, selectedColor, isLocked, currentUniqueId) {
+    if (writtenContent === "") {
+        return;
+    }
+
+    let lockOrUnlock = isLocked ? "fa-lock" : "fa-lock-open";
+    const ticketContainer = document.createElement("div");
+    ticketContainer.setAttribute("class", "ticket-cont");
+    ticketContainer.innerHTML =
+        `<div class="ticket-color ${selectedColor}"></div>
+    <div class="ticket id">#${currentUniqueId}</div>
+    <div class="ticket-area">${writtenContent}</div>
+    <div class="lock-unlock"><i class="fa-solid ${lockOrUnlock}"></i></div>`
+
+    mainContainer.appendChild(ticketContainer);
+
+    // attach other features like lock-unlock, toggle color, filteration etc.,
+    addLockAndUnlock(ticketContainer.querySelector(".ticket-area"), ticketContainer.querySelector(".lock-unlock"));
+    addToggleColor(ticketContainer.querySelector(".ticket-color"));
+    deleteListner(ticketContainer);
+}
+
+const resetActiveStatusOfColorModal = function (priorityColorArrayOfModal) {
+    for (priorityColor of priorityColorArrayOfModal) {
+        priorityColor.classList.remove("active");
+    }
+}
+
+const getSelectedColorOfModal = function (priorityColorArrayOfModal) {
+    for (priorityColor of priorityColorArrayOfModal) {
+        if (priorityColor.classList.contains("active")) {
+            return priorityColor.classList[1];
+        }
+    }
+}
 
 
-ticketColorElements.forEach(ticketColorElement => {
-    addToggleColor(ticketColorElement);
-});
+//=========================  Calling methods ===========================
+
+// const ticketAreaList = mainContainer.querySelectorAll(".ticket-area");
+// const lockBtnList = mainContainer.querySelectorAll(".lock-unlock");
+// const ticketColorEleList = mainContainer.querySelectorAll(".ticket-color");
+
+// for (let i = 0; i < ticketAreaList.length; i++) {
+//     addLockAndUnlock(ticketAreaList[i], lockBtnList[i]);
+
+//     addtoggleColor(ticketColorEleList[i]);
+// }
+
+
+modalCreation();
 filterTickets();
+
+
+
