@@ -7,28 +7,9 @@ const removeBtn = document.querySelector(".remove-btn");
 
 const mainContainer = document.querySelector(".main_cont");
 
-// ========================= Local Storgae ===========================
-
-let allTickets = ??;
-let isFromLocalStorgae = false;
-
-if(typeof allTickets === "string"){
-    allTickets = JSON.parse(allTickets);
-    populateUi();
-}
-
-function populateUi(){
-
-}
-
-
-function updateLocalStorage() {
-
-}
-
 //========================= Change color ===========================
 
-const addToggleColor = function (ticketColorElement) {
+const addToggleColor = function (ticketColorElement, currentId) {
     let colors = ["pink", "blue", "purple", "green"];
     ticketColorElement.addEventListener("click", (e) => {
         const currentColor = e.target.classList[1];
@@ -37,8 +18,18 @@ const addToggleColor = function (ticketColorElement) {
 
         e.target.classList.remove(currentColor);
         e.target.classList.add(colors[nextIdx]);
+
+        //update your local storage about the current status.
+        let ticketObj = allTickets.find((ticket) => {
+            return ticket.id === currentId;
+        });
+
+
+        ticketObj.color = colors[nextIdx];
+        updateLocalStorage();
     });
 }
+
 
 //========================= Filter tickets ===========================
 const filterTickets = function () {
@@ -70,7 +61,7 @@ const filterTickets = function () {
 }
 
 //========================= Lock and Unlock ===========================
-const addLockAndUnlock = function (ticketArea, lockBtn) {
+const addLockAndUnlock = function (ticketArea, lockBtn, currentId) {
     lockBtn.addEventListener("click", () => {
         let isLocked = lockBtn.children[0].classList.contains("fa-lock");
         if (isLocked) {
@@ -82,16 +73,37 @@ const addLockAndUnlock = function (ticketArea, lockBtn) {
             lockBtn.children[0].classList.add("fa-lock");
             ticketArea.setAttribute("contenteditable", false);
         }
+
+
+        //update your local storage about the current status.
+        let ticketObj = allTickets.find((ticket) => {
+            return ticket.id === currentId;
+        });
+
+        // console.log("Rajneesh: ", ticketObj);
+
+
+        ticketObj.content = ticketArea.textContent;
+        ticketObj.isLocked = lockBtn.children[0].classList.contains("fa-lock");
+        updateLocalStorage();
     });
 }
 
 //========================= Delete feature ===========================
 
-const deleteListner = function (ticketColorElement) {
+const deleteListner = function (ticketColorElement, currentId) {
     ticketColorElement.addEventListener("click", () => {
         if (removeBtn.style.color === "red") {
             ticketColorElement.remove();
         }
+
+        //update your local storage about the current status.
+        let allNewTickets = allTickets.filter((ticket) => {
+            return ticket.id !== currentId;
+        });
+
+        allTickets = allNewTickets;
+        updateLocalStorage();
     });
 
 }
@@ -173,9 +185,13 @@ const buildTicketWithAllFeature = function (writtenContent, selectedColor, isLoc
     mainContainer.appendChild(ticketContainer);
 
     // attach other features like lock-unlock, toggle color, filteration etc.,
-    addLockAndUnlock(ticketContainer.querySelector(".ticket-area"), ticketContainer.querySelector(".lock-unlock"));
-    addToggleColor(ticketContainer.querySelector(".ticket-color"));
-    deleteListner(ticketContainer);
+    addLockAndUnlock(ticketContainer.querySelector(".ticket-area"), ticketContainer.querySelector(".lock-unlock"), currentUniqueId);
+    addToggleColor(ticketContainer.querySelector(".ticket-color"), currentUniqueId);
+    deleteListner(ticketContainer, currentUniqueId);
+
+    if (!isFromLocalStorgae) {
+        createTicketObjAndUpdateLocalStorgae(writtenContent, selectedColor, isLocked, currentUniqueId);
+    }
 }
 
 const resetActiveStatusOfColorModal = function (priorityColorArrayOfModal) {
@@ -190,6 +206,44 @@ const getSelectedColorOfModal = function (priorityColorArrayOfModal) {
             return priorityColor.classList[1];
         }
     }
+}
+
+const createTicketObjAndUpdateLocalStorgae = function (writtenContent, selectedColor, isLocked, currentUniqueId) {
+    let ticketObj = {
+        id: currentUniqueId,
+        content: writtenContent,
+        color: selectedColor,
+        isLocked: isLocked
+    }
+
+    allTickets.push(ticketObj);
+    updateLocalStorage();
+}
+
+
+// ========================= Local Storgae ===========================
+
+let allTickets = localStorage.getItem("localTickets") || [];
+let isFromLocalStorgae = false;
+
+if (typeof allTickets === "string") {
+    allTickets = JSON.parse(allTickets);
+    populateUi();
+}
+
+function populateUi() {
+    isFromLocalStorgae = true;
+    for (let i = 0; i < allTickets.length; i++) {
+        let ticket = allTickets[i];
+        buildTicketWithAllFeature(ticket.content, ticket.color, ticket.isLocked, ticket.id);
+    }
+    isFromLocalStorgae = false;
+}
+
+
+function updateLocalStorage() {
+    localStorage.setItem("localTickets", JSON.stringify(allTickets));
+
 }
 
 
