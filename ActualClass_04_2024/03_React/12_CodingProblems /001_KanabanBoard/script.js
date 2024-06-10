@@ -7,6 +7,25 @@ const removeBtn = document.querySelector(".remove-btn");
 
 const mainContainer = document.querySelector(".main_cont");
 
+// ========================= Local Storgae ===========================
+
+let allTickets = ??;
+let isFromLocalStorgae = false;
+
+if(typeof allTickets === "string"){
+    allTickets = JSON.parse(allTickets);
+    populateUi();
+}
+
+function populateUi(){
+
+}
+
+
+function updateLocalStorage() {
+
+}
+
 //========================= Change color ===========================
 
 const addToggleColor = function (ticketColorElement) {
