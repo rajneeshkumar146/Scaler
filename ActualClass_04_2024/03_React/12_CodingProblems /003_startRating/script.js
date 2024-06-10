@@ -15,23 +15,29 @@
 const starContainer = document.querySelector(".star_container");
 const countSpan = document.querySelector("#count");
 const starArray = document.querySelectorAll(".star");
+let clickedIndex = 0;
 
 // Evenrt Listners for the click on star.
 starContainer.addEventListener("click", (event) => {
     if (event.target.hasAttribute("idx")) {
-        clickIndex = event.target.getAttribute("idx");
-        fillstar(clickIndex);
+        clickedIndex = event.target.getAttribute("idx");
+        fillstar(clickedIndex);
     }
 });
 
 // event Listner for mouse hover.
 starContainer.addEventListener("mouseover", (event) => {
+    if (event.target.hasAttribute("idx")) {
+        currentHoverIndex = event.target.getAttribute("idx");
+        // console.log("Rajneesh: ", currentHoverIndex);
+        fillColor(currentHoverIndex);
+    }
 
 });
 
 // event Listner for mouse leave.
-starContainer.addEventListener("mousleave", (event) => {
-
+starContainer.addEventListener("mouseleave", (event) => {
+    fillColor(clickedIndex);
 });
 
 
