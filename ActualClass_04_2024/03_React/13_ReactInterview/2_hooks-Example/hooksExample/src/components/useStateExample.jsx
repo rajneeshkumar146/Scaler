@@ -5,6 +5,12 @@ function Counter() {
     const [count, setCount] = useState(0);
 
     const handleCount = () => {
+        setInterval(() => {
+            console.log(count);
+            setCount((count) => {
+                return count + 1;
+            });
+        }, 1000);
 
     }
 
