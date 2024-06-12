@@ -9,9 +9,9 @@ function Form() {
     const reducer = (state, action) => {
         switch (action) {
             case "firstNameInput":
-
+                return { firstName: action.payload }
             case "lastNameInput":
-
+                return { lastName: action.payload }
             case "clear":
                 return {
                     firstName: "",
@@ -29,17 +29,25 @@ function Form() {
             <input
                 type="text"
                 className="firstName"
-                value={formState.firstName} />
-            ????
+                value={formState.firstName}
+                onChange={(event) => {
+                    dispatch({ type: "firstNameInput", payload: event.target.value })
+                }}
+            />
             <input
                 type="text"
                 className="firstName"
-                value={formState.lastName} 
-             ??????
+                value={formState.lastName}
+                onChange={(event) => {
+                    dispatch({ type: "lastNameInput", payload: event.target.value })
+                }}
             />
-            <button>Rest all fields</button>
+            <button onClick={(event) => {
+                event.preventDefault();    // optional
+                dispatch({ type: "clear" })
+            }}>Rest all fields</button>
 
-        </form>
+        </form >
     )
 }
 
