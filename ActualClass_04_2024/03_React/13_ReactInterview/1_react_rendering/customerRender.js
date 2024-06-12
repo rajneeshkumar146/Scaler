@@ -56,6 +56,9 @@ function render(obj) {
     }
 
     const props = obj.props;
+    for(let prop in props){
+        
+    }
 
 }
 
