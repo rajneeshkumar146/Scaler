@@ -26,11 +26,11 @@ const users = [
 
 app.post("/users", (req, res) => {
     const newUser = req.body;
-    
+
     // Operation
     const userId = users.length + 1;
     newUser.id = userId;
-    
+
     // persist this information in your DB
     users.push(newUser);
 
@@ -38,6 +38,21 @@ app.post("/users", (req, res) => {
     res.status(201).json({ message: "User created", user: newUser });
 
     console.log("Print all Users: ", users);
+});
+
+
+const usersDb = [];
+const notAllowList = ["R", "r"];
+app.post('/payment', (req, res) => {
+    const paymentBody = req.body;
+    if (paymentBody.user.startsWith('r') || paymentBody.user.startsWith('R')) {   // instead of this one create a notAllowList
+        res.status(400).json({ message: 'Invalid User' });
+    }else {
+        usersDb.push(paymentBody);
+        res.status(200).json({ message: 'Valid User,User saved'});
+    }
+
+    console.log("Print all Users: ", usersDb)
 });
 
 // Start the server.
