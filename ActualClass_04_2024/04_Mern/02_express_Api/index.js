@@ -3,6 +3,17 @@ const express = require("express");
 // create an express app.
 const app = express();
 app.use(express.json());   // it is a middleware for all post request which help to receive reqest body.
+app.use(express.static("public"))
+app.use(express.urlencoded({ extended: true }));
+
+
+const loggerMiddleware = (req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next(); // call the next middleware.
+}
+
+// app.use(loggerMiddleware);  // it will work for all type of requests.
+
 
 // define a route
 app.get("/", (req, res) => {
@@ -53,6 +64,37 @@ app.post('/payment', (req, res) => {
     }
 
     console.log("Print all Users: ", usersDb)
+});
+
+
+app.delete("/users/:id", (req,res)=>{
+    const userId = parseInt(req.params.id);
+
+    // find the user with id.
+    const userIndex = users.findIndex((user)=> user.id === userId);
+    if(userIndex === -1){
+        return res.status(404).json({message:"user not found"});
+    }
+
+    users.splice(userIndex, 1);
+    res.status(200).json({message: "user deleted"})
+
+    console.log("Print all Users: ", users)
+});
+
+app.get("/special", loggerMiddleware, (req, res)=> {
+    res.send("this is a special route");
+});
+
+// localhost:3000/search?name=rajneesh
+app.get("/search", (req, res)=> {
+    const queryParam = req.query;   
+    console.log("queryParam: ", queryParam);
+    res.send(`Your parameter are ${JSON.stringify(queryParam)}`)
+});
+
+app.use((req, res)=>{
+    res.status(404).send("page not found");
 });
 
 // Start the server.
