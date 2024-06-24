@@ -14,4 +14,37 @@ const createUser = async function (req, res) {
     }
 }
 
-module.exports = { createUser }
+
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await userModel.find();
+        console.log("All users", users);
+        res.status(201).json(users);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+}
+
+getUserById = async (req, res) => {
+    const id = req.params.id;
+    const user = await userModel.findById(id);
+    res.status(200).json(user);
+};
+
+updateUserById = async (req, res) => {
+    await userModel.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({ message: "User updated successfully" });
+}
+
+deleteUserById = async (req, res) => {
+    await userModel.findByIdAndDelete(req.params.id, req.body);
+    res.status(200).json({ message: "User Deleted successfully" });
+}
+
+module.exports = {
+    getAllUsers,
+    createUser,
+    getUserById,
+    updateUserById,
+    deleteUserById
+}
