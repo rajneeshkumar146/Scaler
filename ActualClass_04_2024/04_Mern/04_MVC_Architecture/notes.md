@@ -20,3 +20,23 @@ Intallation:
     g. Efficient Testing and debugging.
 
     h. Parallel Develpmet.
+
+
+
+
+## Pre post hooks.
+Middleware(also called hooks) that can be executed at various points in the lifecycle of a document.
+
+    # pre Hooks
+        a. Data Validation and Sanitization
+        b. Password Hashing:
+        c. Setting Default Values:
+        d. Data Transformation
+        e. Logging and Auditing
+
+    # post Hooks
+        a. Logging
+        b. Data Aggregation or Analysis:
+        c. Closing database connection.
+
+
