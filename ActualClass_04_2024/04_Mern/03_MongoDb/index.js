@@ -86,8 +86,8 @@ app.post("/api/products", async function (req, res) {
 });
 
 app.get("/api/products", async function (req, res) {
-    // const allProducts = await productModel.find();
-    const allProducts = await productModel.find({ category: "TV" });
+    const allProducts = await productModel.find();
+    // const allProducts = await productModel.find({ category: "TV" });
 
     console.log("all products: ", allProducts);
     return res.status(201).json(allProducts);
@@ -97,6 +97,21 @@ app.get("/api/products/:id", async (req, res) => {
     const id = req.params.id;
     const product = await productModel.findById(id);
     res.status(200).json(product);
+});
+
+app.put("/api/products/:id", async (req, res) => {
+    await productModel.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({ message: "Product updated successfully" });
+});
+
+app.patch("/api/products/:id", async (req, res) => {
+    await productModel.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({ message: "Product updated successfully" });
+});
+
+app.delete("/api/products/:id", async (req, res) => {
+    await productModel.findByIdAndDelete(req.params.id, req.body);
+    res.status(200).json({ message: "Product Deleted successfully" });
 });
 
 
