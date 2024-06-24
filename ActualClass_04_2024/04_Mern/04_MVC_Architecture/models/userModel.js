@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     updataedAt: Date
 });
 
-
+// Hooks
 
 
 const userModel = mongoose.model('user', userSchema);
