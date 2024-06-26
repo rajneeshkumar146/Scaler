@@ -12,10 +12,11 @@ connectDB();
 
 
 /** Routes */
-app.use('/api/users', userRouter)
+app.use('/api/users', userRouter);
 
-
-
+app.use((req,res) => {
+    res.status(404).json({message: "Page not found"});
+});
 
 app.listen(8082, () => {
     console.log("Server is running on port 8082");
