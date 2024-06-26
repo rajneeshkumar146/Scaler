@@ -1,0 +1,19 @@
+## Package need to install for front end:
+1. npx create-react-app client
+2. cd client 
+3. npm start
+4. npm install react-router-dom antd axios
+
+
+## Basic commands or shortcuts
+1. rfce -> for basic jsx template.
+
+## Package need to install for backend:
+1. npm init -y
+2. npm install express mongoose bcryptjs jsonwebtoken
+3. install nodemon at global level.
+4. npm install --save dotenv 
+
+
+## Some of reference:
+1. https://ant.design/components/overview/
