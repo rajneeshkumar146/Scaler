@@ -1,69 +1,59 @@
-import React from 'react'
-import { Form, Input, Button, message } from "antd"
-import { Link, useNavigate } from 'react-router-dom'
-import { RegisterUser } from '../../api/users';
+import React from "react";
+import { Button, Form, Input, message } from "antd";
+import { Link } from "react-router-dom";
+import { RegisterUser } from "../../api/users";
 
 function Register() {
-  const navigate = useNavigate();
-  const onFinish = async (values)=>{
-    console.log("values: ", values);
+  const onFinish = async (values) => {
+
     try {
       const response = await RegisterUser(values);
+      console.log(response);
       if (response.success) {
         message.success(response.message);
-        navigate("/")
       } else {
         message.error(response.message);
       }
     } catch (err) {
-      console.log("Error occured: ", err);
+      console.log(err);
     }
-
-  }
+  };
   return (
     <>
       <main className="App-header">
         <h1>Register to BookMyShow</h1>
         <section className="mw-500 text-center px-3">
           <Form layout="vertical" onFinish={onFinish}>
-
             <Form.Item
               label="Name"
               htmlFor="name"
               name="name"
               className="d-block"
-              rules={[
-                { required: true, message: "Name is Required" }
-              ]}
+              rules={[{ required: true, message: "Name is required" }]}
             >
-              <Input type="text" placeholder="Enter Your Name"></Input>
+              <Input type="text" placeholder="Enter your Name"></Input>
             </Form.Item>
-
             <Form.Item
               label="Email"
               htmlFor="email"
               name="email"
               className="d-block"
               rules={[
-                { required: true, message: "Email is Required" },
-                { type: "email", message: "Enter a valid Email" }
+                { required: true, message: "Email is required" },
+                { type: "email", message: "Enter a valid Email" },
               ]}
             >
-              <Input type="text" placeholder="Enter Your Email"></Input>
+              <Input type="text" placeholder="Enter your Email"></Input>
             </Form.Item>
-
             <Form.Item
               label="Password"
               htmlFor="password"
               name="password"
               className="d-block"
-              rules={[
-                { required: true, message: "Password is required" }
-              ]}
+              rules={[{ required: true, message: "Password is required" }]}
             >
-              <Input type="password" placeholder="Enter Your Password"></Input>
+              <Input type="password" placeholder="Enter your Password"></Input>
             </Form.Item>
-
             <Form.Item className="d-block">
               <Button
                 type="primary"
@@ -74,22 +64,16 @@ function Register() {
                 Register
               </Button>
             </Form.Item>
-
           </Form>
-
           <div>
             <p>
-              Already a user? <Link to="/login">Register Here</Link>
+              Already a user ? <Link to="/login">Login Now</Link>
             </p>
           </div>
-
         </section>
-
-
       </main>
-
     </>
-  )
+  );
 }
 
-export default Register
+export default Register;

@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 const loaderSlice = createSlice({
-    name: "loaders",
+    name: "loaders",// Name of the slice, used for action type prefixes
     initialState: {
-        loading: false,
+        loading: false,// Initial state
     },
     reducers: {
+        // Reducer to show loading spinner
         ShowLoading: (state) => {
             state.loading = true;
         },
@@ -14,7 +14,5 @@ const loaderSlice = createSlice({
         }
     }
 });
-
-
 export const { ShowLoading, HideLoading } = loaderSlice.actions;
 export default loaderSlice.reducer;

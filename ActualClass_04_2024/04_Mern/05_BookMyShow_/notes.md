@@ -9,7 +9,7 @@
 
 
 ## If you face issue of incorrect host api call:
-rm -r package-lock.json node_module
+rm -r package-lock.json node_modules
 
 
 ## Basic commands or shortcuts
