@@ -1,4 +1,4 @@
-import React from 'react'
+import React  from 'react'
 import { Form, Input, Button, message } from "antd"
 import { Link, useNavigate } from 'react-router-dom'
 import { LoginUser } from '../../api/users';
@@ -12,14 +12,14 @@ function Login() {
       const response = await LoginUser(values);
       if (response.success) {
         message.success(response.message);
+        localStorage.setItem("token", response.data);
+        navigate("/")
       } else {
         message.error(response.message);
       }
-      navigate("/")
     } catch (err) {
       console.log("Error occured: ", err);
     }
-
   }
 
   return (

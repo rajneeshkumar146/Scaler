@@ -1,14 +1,31 @@
 import React from 'react'
-import { Form, Input, Button } from "antd"
-import { Link } from 'react-router-dom'
+import { Form, Input, Button, message } from "antd"
+import { Link, useNavigate } from 'react-router-dom'
+import { RegisterUser } from '../../api/users';
 
 function Register() {
+  const navigate = useNavigate();
+  const onFinish = async (values)=>{
+    console.log("values: ", values);
+    try {
+      const response = await RegisterUser(values);
+      if (response.success) {
+        message.success(response.message);
+        navigate("/")
+      } else {
+        message.error(response.message);
+      }
+    } catch (err) {
+      console.log("Error occured: ", err);
+    }
+
+  }
   return (
     <>
       <main className="App-header">
         <h1>Register to BookMyShow</h1>
         <section className="mw-500 text-center px-3">
-          <Form layout="vertical">
+          <Form layout="vertical" onFinish={onFinish}>
 
             <Form.Item
               label="Name"

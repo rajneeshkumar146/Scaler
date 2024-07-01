@@ -1,4 +1,5 @@
 const userModel = require("../model/userModel");
+const jwt = require("jsonwebtoken");
 
 /**
  "name":"siri",
@@ -31,6 +32,10 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const user = await userModel.findOne({ email: req.body.email });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+            expiresIn: "1d",
+        });
+
         if (!user) {
             return res.send({
                 success: false,
@@ -47,7 +52,8 @@ const login = async (req, res) => {
 
         res.send({
             success: true,
-            message: "Login successful"
+            message: "Login successful",
+            data: token,
         });
     } catch (err) {
         console.log("Error occured: ", err);
@@ -58,7 +64,22 @@ const login = async (req, res) => {
     }
 }
 
+const getCurrentUser = async (req, res) => {
+    console.log("userId: ", req.body.userId);
+    const user = await userModel.findById(req.body.userId).select("-password");
+
+    // let user = "r";
+    console.log("User Found: ", user);
+
+    res.send({
+        success: true,
+        data: user,
+        message: "You are authorized to go the protected route",
+    });
+}
+
 module.exports = {
     register,
     login,
+    getCurrentUser
 }

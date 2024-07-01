@@ -3,6 +3,13 @@
 2. cd client 
 3. npm start
 4. npm install react-router-dom antd axios
+5. npm i @reduxjs/toolkit
+6. npm i react-redux
+7. npm i @ant-design/icons
+
+
+## If you face issue of incorrect host api call:
+rm -r package-lock.json node_module
 
 
 ## Basic commands or shortcuts
