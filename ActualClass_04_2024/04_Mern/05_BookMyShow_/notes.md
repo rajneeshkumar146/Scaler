@@ -10,6 +10,7 @@
 
 ## If you face issue of incorrect host api call:
 rm -r package-lock.json node_modules
+npm i
 
 
 ## Basic commands or shortcuts

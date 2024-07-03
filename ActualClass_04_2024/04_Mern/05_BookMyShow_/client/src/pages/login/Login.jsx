@@ -22,9 +22,6 @@ function Login() {
     }
   };
 
-  const hello = (values) => {
-    console.log("hello");
-  };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/");
