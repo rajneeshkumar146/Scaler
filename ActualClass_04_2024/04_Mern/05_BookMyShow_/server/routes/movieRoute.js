@@ -7,8 +7,8 @@ const {
 } = require("../controllers/movieControllers");
 
 movieRouter.post("/add-movie", addMovie);
-movieRouter.get("/get-all-movies", getAllMovies);
-movieRouter.put("/update-movies", updateMovies)
+movieRouter.get("/get-all-movie", getAllMovie);
+movieRouter.put("/update-movie", updateMovie)
 movieRouter.post("/delete-movie", deleteMovie);
 
-module.exports = userRouter;
+module.exports = movieRouter;

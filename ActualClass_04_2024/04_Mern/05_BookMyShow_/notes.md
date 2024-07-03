@@ -6,6 +6,7 @@
 5. npm i @reduxjs/toolkit
 6. npm i react-redux
 7. npm i @ant-design/icons
+8. npm i moment
 
 
 ## If you face issue of incorrect host api call:
