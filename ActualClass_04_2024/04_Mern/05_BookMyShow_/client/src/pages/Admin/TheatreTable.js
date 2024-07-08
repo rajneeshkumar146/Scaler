@@ -1,6 +1,8 @@
-import React from 'react'
-import { message, Table } from "antd"
-import { HideLoading, ShowLoading } from '../../redux/loaderSlice';
+import { useState, useEffect } from "react";
+import { getAllTheatresForAdmin, updateTheatre } from "../../api/theatre";
+import { ShowLoading, HideLoading } from "../../redux/loaderSlice";
+import { useDispatch } from "react-redux";
+import { message, Button, Table } from "antd";
 
 function TheatreTable() {
     const [theatres, setTheatres] = useState([]);
@@ -10,6 +12,28 @@ function TheatreTable() {
         try {
             dispatch(ShowLoading());
 
+            if (response.success) {
+                const allTheatres = response.data;
+
+            } else {
+                message.error(response.message);
+            }
+            dispatch(HideLoading());
+        } catch (err) {
+            dispatch(HideLoading());
+            message.error(err.message);
+        }
+    }
+
+    const handleStatusChange = async (theatre) => {
+        try {
+            dispatch(ShowLoading());
+
+            if (response.success) {
+                message.success(response.message);
+                getData();
+            }
+            dispatch(HideLoading());
         } catch (err) {
             dispatch(HideLoading());
             message.error(err.message);
