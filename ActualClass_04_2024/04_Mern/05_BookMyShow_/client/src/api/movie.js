@@ -1,6 +1,6 @@
-const { axiosInstance } = require(".");
+import { axiosInstance } from "./index";
 
-export const getAllMovie = async () => {
+export const getAllMovies = async () => {
     try {
         const response = await axiosInstance.get("api/movies/get-all-movie");
         return response.data;
