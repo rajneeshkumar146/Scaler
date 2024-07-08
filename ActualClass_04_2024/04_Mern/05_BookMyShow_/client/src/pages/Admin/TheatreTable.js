@@ -11,10 +11,13 @@ function TheatreTable() {
     const getData = async () => {
         try {
             dispatch(ShowLoading());
-
+            const response = await getAllTheatresForAdmin();
             if (response.success) {
                 const allTheatres = response.data;
-
+                setTheatres(
+                    allTheatres.map(function (item) {
+                        return { ...item, key: `theatre${item._id}` };
+                    }));
             } else {
                 message.error(response.message);
             }
@@ -28,7 +31,12 @@ function TheatreTable() {
     const handleStatusChange = async (theatre) => {
         try {
             dispatch(ShowLoading());
-
+            let values = {
+                ...theatre,
+                theatreId: theatre._id,
+                isActive: !theatre.isActive,
+            }
+            const response = await updateTheatre(values);
             if (response.success) {
                 message.success(response.message);
                 getData();
