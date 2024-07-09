@@ -5,6 +5,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { getAllMovies } from '../../api/movie';
 import { HideLoading, ShowLoading } from '../../redux/loaderSlice';
+import { message, Row, Col, Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import moment from "moment";
 
 
 const Home = () => {
