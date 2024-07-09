@@ -6,6 +6,7 @@ const connectDB = require("./config/dbConfig");
 const userRouter = require("./routes/userRouter");
 const movieRouter = require("./routes/movieRoute")
 const theatreRouter = require("./routes/theatreRoute")
+const showRouter = require("./routes/showRoute");
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ connectDB();
 app.use('/api/users', userRouter);
 app.use("/api/movies", movieRouter)
 app.use("/api/theatres", theatreRouter)
+app.use("/api/shows", showRouter);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Page not found" });

@@ -6,6 +6,7 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { getAllTheatres } from "../../api/theatre";
 import { useDispatch, useSelector } from "react-redux";
 import { ShowLoading, HideLoading } from "../../redux/loaderSlice";
+import ShowModal from "./ShowModal";
 
 const TheatreList = () => {
     const { user } = useSelector((state) => state.users);
@@ -14,6 +15,7 @@ const TheatreList = () => {
     const [selectedTheatre, setSelectedTheatre] = useState(null);
     const [formType, setFormType] = useState("add");
     const [theatres, setTheatres] = useState([]);
+    const [isShowModalOpen, setIsShowModalOpen] = useState(false);
     const dispatch = useDispatch();
 
 
@@ -82,6 +84,7 @@ const TheatreList = () => {
             render: (text, data) => {
                 return (
                     <div className="d-flex align-items-center gap-10">
+
                         <Button
                             onClick={() => {
                                 setIsModalOpen(true);
@@ -91,6 +94,7 @@ const TheatreList = () => {
                         >
                             <EditOutlined />
                         </Button>
+
                         <Button
                             onClick={() => {
                                 setIsDeleteModalOpen(true);
@@ -99,6 +103,15 @@ const TheatreList = () => {
                         >
                             <DeleteOutlined />
                         </Button>
+
+                        {data.isActive && (
+                            <Button
+                                onClick={() => {
+                                    setIsShowModalOpen(true);
+                                    setSelectedTheatre(data);
+                                }}
+
+                            >+ Shows</Button>)}
                     </div>
                 );
             },
@@ -129,6 +142,7 @@ const TheatreList = () => {
                     getData={getData}
                 />
             )}
+
             {isDeleteModalOpen && (
                 <DeleteTheatreModal
                     isDeleteModalOpen={isDeleteModalOpen}
@@ -138,6 +152,16 @@ const TheatreList = () => {
                     getData={getData}
                 />
             )}
+
+            (isShowModalOpen && (
+            <ShowModal
+                isShowModalOpen={isShowModalOpen}
+                setIsShowModalOpen={setIsShowModalOpen}
+                selectedTheatre={selectedTheatre}
+            />
+            ))
+
+
         </>
     );
 };
