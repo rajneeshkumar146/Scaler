@@ -9,6 +9,8 @@ import Register from './pages/register/Register';
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import SingleMovie from './pages/home/SingleMovie';
+import BookShow from './pages/home/BookShow';
 
 
 function App() {
@@ -47,6 +49,24 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Partner />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/movie/:id"
+              element={
+                <ProtectedRoute>
+                  <SingleMovie />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/book-show/:id"
+              element={
+                <ProtectedRoute>
+                  <BookShow />
                 </ProtectedRoute>
               }
             />

@@ -36,3 +36,12 @@ export const deleteMovie = async (payload) => {
         console.log("Error while calling deleteMovie API: ", err);
     }
 };
+
+export const getMovieById = async (id) => {
+    try {
+      const response = await axiosInstance.get(`/api/movies/movie/${id}`);
+      return response.data;
+    } catch (err) {
+      console.log("Error while calling getMovieById API ", err);
+    }
+  };

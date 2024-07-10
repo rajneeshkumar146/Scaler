@@ -54,6 +54,7 @@ const ShowModal = ({
         theatreId: selectedTheatre._id,
       });
       if (showResponse.success) {
+        console.log("Rajneesh_show: ", showResponse.data);
         setShows(showResponse.data);
       } else {
         message.error(showResponse.message);
@@ -115,7 +116,7 @@ const ShowModal = ({
       dispatch(HideLoading());
     }
   };
-  
+
   const columns = [
     {
       title: "Show Name",
@@ -218,8 +219,8 @@ const ShowModal = ({
           {view === "table"
             ? "List of Shows"
             : view === "form"
-            ? "Add Show"
-            : "Edit Show"}
+              ? "Add Show"
+              : "Edit Show"}
         </h3>
         {view === "table" && (
           <Button type="primary" onClick={() => setView("form")}>
@@ -254,7 +255,6 @@ const ShowModal = ({
                   lg: 16,
                 }}
               >
-               
                 <Col span={8}>
                   <Form.Item
                     label="Show Name"
@@ -272,7 +272,6 @@ const ShowModal = ({
                     ></Input>
                   </Form.Item>
                 </Col>
-                
                 <Col span={8}>
                   <Form.Item
                     label="Show Date"
@@ -290,7 +289,6 @@ const ShowModal = ({
                     ></Input>
                   </Form.Item>
                 </Col>
-               
                 <Col span={8}>
                   <Form.Item
                     label="Show Timing"
@@ -309,7 +307,6 @@ const ShowModal = ({
                   </Form.Item>
                 </Col>
               </Row>
-
             </Col>
             <Col span={24}>
               <Row
@@ -341,7 +338,6 @@ const ShowModal = ({
                     />
                   </Form.Item>
                 </Col>
-
                 <Col span={8}>
                   <Form.Item
                     label="Ticket Price"
@@ -359,7 +355,6 @@ const ShowModal = ({
                     ></Input>
                   </Form.Item>
                 </Col>
-
                 <Col span={8}>
                   <Form.Item
                     label="Total Seats"
@@ -377,7 +372,6 @@ const ShowModal = ({
                     ></Input>
                   </Form.Item>
                 </Col>
-                
               </Row>
             </Col>
           </Row>

@@ -64,8 +64,8 @@ router.post("/get-all-shows-by-theatres", async (req, res) => {
         const shows = await Show.find({ theatre: req.body.theatreId }).populate("movie");
         res.send({
             success: true,
-            shows: shows,
-            message: "All shows by thatre"
+            data: shows,
+            message: "All shows by theatre"
         })
 
     } catch (err) {
@@ -82,26 +82,36 @@ router.post("/get-all-theatres-by-movie", async (req, res) => {
     try {
         const { movie, date } = req.body;
         const shows = await Show.find({ movie, date }).populate("theatre");
-
-        // filter out the unique theatre.
-        const uniqueTheatere = [];
+        // filter out the unique theatre
+        const uniqueTheatres = [];
         shows.forEach((show) => {
-            const isTheatere = uniqueTheatere.find((theatre) => theatre._id === show.theatre._id);
+            const isTheatere = uniqueTheatres.find(
+                (theatre) => theatre._id === show.theatre._id
+            );
             if (!isTheatere) {
-                const showOfThisTheatre = show.filter((showObj) => showObj.theatre._id === show.theatre._id);
-
-                uniqueTheatere.push({ ...show.theatre._doc, shows: showOfThisTheatre });
+                const showsOfThisTheatre = shows.filter(
+                    (showObj) => showObj.theatre._id === show.theatre._id
+                );
+                uniqueTheatres.push({
+                    ...show.theatre._doc,
+                    shows: showsOfThisTheatre,
+                });
+                // uniqueTheatre -> [{theatre1, shows: [show1, show2]},{theatre2, shows:[show1, show2]}]
             }
         });
-        // uniqueTheatre-> [{theatre1, shows: [show1, show2]},{theatre2, shows: [show1, show2]}...]
+        res.send({
+            success: true,
+            data: uniqueTheatres,
+            message: "All theatres by movie",
+        });
     } catch (err) {
         console.log(err);
         res.send({
             success: false,
-            message: "Failed to get all theaters by movie"
-        })
+            message: "Failed to get all theatres by movie",
+        });
     }
-})
+});
 
 // get show by id
 router.post("/get-show-by-id", async (req, res) => {

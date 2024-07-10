@@ -1,14 +1,11 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { getAllMovies } from '../../api/movie';
-import { HideLoading, ShowLoading } from '../../redux/loaderSlice';
+import { useEffect, useState } from "react";
+import { HideLoading, ShowLoading } from "../../redux/loaderSlice";
+import { useDispatch } from "react-redux";
+import { getAllMovies } from "../../api/movie";
 import { message, Row, Col, Input } from "antd";
+import { useNavigate } from "react-router-dom";
 import { SearchOutlined } from "@ant-design/icons";
 import moment from "moment";
-
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,25 +22,22 @@ const Home = () => {
       } else {
         message.error(response.message);
       }
-
       dispatch(HideLoading());
     } catch (error) {
-      console.log("error while getting all movies: ", error);
+      console.log("Error while getting all movies", error);
       dispatch(HideLoading());
       message.error("Error while getting all movies");
     }
-  }
+  };
 
   useEffect(() => {
     getData();
   }, []);
 
-
   const handleSearch = (e) => {
-    setSearchText(e.target.value);
-    console.log("SerachText: ", searchText);
-  }
-
+    setSearchText(e.target.value); //Inside out  iNsIde
+    console.log("searchText", searchText);
+  };
   return (
     <>
       <Row className="justify-content-center w-100">
@@ -116,7 +110,6 @@ const Home = () => {
       </Row>
     </>
   );
+};
 
-}
-
-export default Home
+export default Home;

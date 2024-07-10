@@ -18,7 +18,7 @@ const showSchema = new mongoose.Schema({
     }, ticketPrice: {
         type: Number,
         required: true,
-    }, TotalSeats: {
+    }, totalSeats: {
         type: Number,
         required: true,
     }, bookedSeats: {

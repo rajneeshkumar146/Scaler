@@ -39,8 +39,7 @@ const TheatreList = () => {
             console.log(err);
             dispatch(HideLoading()); // state.loading = false
         }
-    }
-
+    };
 
     useEffect(() => {
         getData();
@@ -110,14 +109,15 @@ const TheatreList = () => {
                                     setIsShowModalOpen(true);
                                     setSelectedTheatre(data);
                                 }}
-
-                            >+ Shows</Button>)}
+                            >
+                                + Shows
+                            </Button>
+                        )}
                     </div>
                 );
             },
         },
     ];
-
     return (
         <>
             <div className="d-flex justify-content-end">
@@ -142,7 +142,6 @@ const TheatreList = () => {
                     getData={getData}
                 />
             )}
-
             {isDeleteModalOpen && (
                 <DeleteTheatreModal
                     isDeleteModalOpen={isDeleteModalOpen}
@@ -152,16 +151,13 @@ const TheatreList = () => {
                     getData={getData}
                 />
             )}
-
-            (isShowModalOpen && (
-            <ShowModal
-                isShowModalOpen={isShowModalOpen}
-                setIsShowModalOpen={setIsShowModalOpen}
-                selectedTheatre={selectedTheatre}
-            />
-            ))
-
-
+            {isShowModalOpen && (
+                <ShowModal
+                    isShowModalOpen={isShowModalOpen}
+                    setIsShowModalOpen={setIsShowModalOpen}
+                    selectedTheatre={selectedTheatre}
+                />
+            )}
         </>
     );
 };
