@@ -7,7 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Admin from './pages/Admin';
-import Profile from './pages/User';
+import Profile from "./pages/Profile";
 import Partner from './pages/Partner';
 import BookShow from "./pages/home/BookShow";
 import SingleMovie from "./pages/home/SingleMovie";
