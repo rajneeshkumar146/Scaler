@@ -7,6 +7,9 @@
 6. npm i react-redux
 7. npm i @ant-design/icons
 8. npm i moment
+10.  npm i react-stripe-checkout
+11. [server] npm i stripe
+12. [Server] npm i nodemailer
 
 
 ## If you face issue of incorrect host api call:
