@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ShowLoading } from "../../redux/loaderSlice";
 import { getShowById } from "../../api/shows";
 import { useNavigate, useParams } from "react-router-dom";
-import { message, Card, Row, Col ,Button} from "antd";
+import { message, Card, Row, Col, Button } from "antd";
 import moment from "moment";
 
-// import StripeCheckout from "react-stripe-checkout";
-// import { bookShow, makePayment } from "../../api/booking";
+import StripeCheckout from "react-stripe-checkout";
+import { bookShow, makePayment } from "../../api/booking";
 
 const BookShow = () => {
   // Redux state and hooks
@@ -39,8 +39,8 @@ const BookShow = () => {
   // Function to generate seat layout dynamically
   const getSeats = () => {
     let columns = 12; // Number of columns for seating arrangement
-    let totalSeats = 120; // Total number of seats
-    let rows = totalSeats / columns; // Calculating number of rows
+    let totalSeats = show.totalSeats; // Total number of seats
+    let rows = Math.ceil(totalSeats / columns); // Calculating number of rows
     return (
       <div className="d-flex flex-column align-items-center">
         <div className="w-100 max-width-600 mx-auto mb-25px">
@@ -116,43 +116,42 @@ const BookShow = () => {
 
   const onToken = async (token) => {
     console.log("token from stripw", token);
-    // dispatch(ShowLoading());
-    // const response = await makePayment(
-    //   token,
-    //   selectedSeats.length * show.ticketPrice
-    // );
-    // if (response.success) {
-    //   message.success(response.message);
-    //   book(response.data);
-    //   console.log(response);
-    // } else {
-    //   message.error(response.message);
-    // }
-    // dispatch(HideLoading());
+    dispatch(ShowLoading());
+    const response = await makePayment(
+      token,
+      selectedSeats.length * show.ticketPrice
+    );
+    if (response.success) {
+      message.success(response.message);
+      book(response.data);
+      console.log(response);
+    } else {
+      message.error(response.message);
+    }
+    dispatch(HideLoading());
   };
 
-  // const book = async (transactionId) => {
-  //   try {
-  //     dispatch(ShowLoading());
-  //     const response = await bookShow({
-  //       show: params.id,
-  //       transactionId,
-  //       seats: selectedSeats,
-  //       user: user._id,
-  //     });
-  //     if (response.success) {
-  //       message.success(response.message);
-  //       navigate("/profile");
-  //     } else {
-  //       message.error(response.message);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const book = async (transactionId) => {
+    try {
+      dispatch(ShowLoading());
+      const response = await bookShow({
+        show: params.id,
+        transactionId,
+        seats: selectedSeats,
+        user: user._id,
+      });
+      if (response.success) {
+        message.success(response.message);
+        navigate("/profile");
+      } else {
+        message.error(response.message);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // JSX rendering
- 
   return (
     <>
       {show && (
@@ -190,6 +189,23 @@ const BookShow = () => {
               style={{ width: "100%" }}
             >
               {getSeats()} {/* Rendering dynamic seat layout */}
+
+              {selectedSeats.length > 0 && (
+                <StripeCheckout
+                  token={onToken}
+                  amount={selectedSeats.length * show.ticketPrice * 100}
+                  stripeKey="pk_test_51PWxveRqBCzyvFZoHMLuIwOIFjkSaLV4u0NaGMfAOTV1cc1efIrJ1HKQbCqyZxw36BkEC2OlhstFYLaPhFpIbAet00qSxt2kDP"
+                >
+                  {/* Use this one in some situation=> pk_test_eTH82XLklCU1LJBkr2cSDiGL001Bew71X8  */}
+                  <div className="max-width-600 mx-auto">
+                    <Button type="primary" shape="round" size="large" block>
+                      Pay Now
+                    </Button>
+                  </div>
+                </StripeCheckout>
+              )}
+
+
             </Card>
           </Col>
         </Row>

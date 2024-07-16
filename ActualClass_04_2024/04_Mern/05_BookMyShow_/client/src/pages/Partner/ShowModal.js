@@ -54,7 +54,6 @@ const ShowModal = ({
         theatreId: selectedTheatre._id,
       });
       if (showResponse.success) {
-        console.log("Rajneesh_show: ", showResponse.data);
         setShows(showResponse.data);
       } else {
         message.error(showResponse.message);
@@ -116,7 +115,7 @@ const ShowModal = ({
       dispatch(HideLoading());
     }
   };
-
+  
   const columns = [
     {
       title: "Show Name",
@@ -167,7 +166,6 @@ const ShowModal = ({
       render: (text, data) => {
         return (
           <div className="d-flex align-items-center gap-10">
-            
             <Button
               onClick={() => {
                 setView("edit"); // tooglling add and edit
@@ -181,11 +179,9 @@ const ShowModal = ({
             >
               <EditOutlined />
             </Button>
-
             <Button onClick={() => handleDelete(data._id)}>
               <DeleteOutlined />
             </Button>
-
             {data.isActive && (
               <Button
                 onClick={() => {
@@ -219,8 +215,8 @@ const ShowModal = ({
           {view === "table"
             ? "List of Shows"
             : view === "form"
-              ? "Add Show"
-              : "Edit Show"}
+            ? "Add Show"
+            : "Edit Show"}
         </h3>
         {view === "table" && (
           <Button type="primary" onClick={() => setView("form")}>

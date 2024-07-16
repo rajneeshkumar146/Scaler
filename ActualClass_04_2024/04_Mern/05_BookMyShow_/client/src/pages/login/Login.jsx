@@ -22,6 +22,9 @@ function Login() {
     }
   };
 
+  const hello = (values) => {
+    console.log("hello");
+  };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/");
@@ -69,6 +72,11 @@ function Login() {
             <p>
               New User ? <Link to="/register"> Register Here</Link>
             </p>
+
+            <p>
+              Forget Password ? <Link to="/forget"> Click Here</Link>
+            </p>
+
           </div>
         </section>
       </main>
