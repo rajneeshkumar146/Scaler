@@ -98,6 +98,7 @@ userRouter.patch("/resetpassword/:email", async function (req, res) {
     const user = await User.findOne({ email: req.params.email });
     // if user is not present
     if (user == null) {
+      return res.status(404)
       return res.status(404).json({
         status: "failure",
         message: "user not found",

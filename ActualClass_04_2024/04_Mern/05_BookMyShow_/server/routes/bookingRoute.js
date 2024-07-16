@@ -78,44 +78,11 @@ router.post("/book-show", auth, async (req, res) => {
       transactionid: populatedBooking.transactionId,
     });
 
+    console.log("Line no 81 Hello!!");
     res.send({
       success: true,
       message: "Show booked successfully",
       data: newBooking,
-    });
-  } catch (err) {
-    console.log(err);
-    res.send({
-      success: false,
-      message: "Failed to book show",
-    });
-  }
-});
-
-router.post("/get-all-bookings", auth, async (req, res) => {
-  try {
-    const bookings = await Booking.find({ user: req.body.userId })
-      .populate("user")
-      .populate("show")
-      .populate({
-        path: "show",
-        populate: {
-          path: "movie",
-          model: "movies",
-        },
-      })
-      .populate({
-        path: "show",
-        populate: {
-          path: "theatre",
-          model: "theatre",
-        },
-      });
-
-    res.send({
-      success: true,
-      message: "Show booked successfully",
-      data: bookings,
     });
   } catch (err) {
     console.log(err);

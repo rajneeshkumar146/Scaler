@@ -34,8 +34,7 @@ const login = async (req, res) => {
         const user = await userModel.findOne({ email: req.body.email });
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
             expiresIn: "1d",
-        });
-
+          });
         if (!user) {
             return res.send({
                 success: false,
@@ -65,21 +64,18 @@ const login = async (req, res) => {
 }
 
 const getCurrentUser = async (req, res) => {
-    console.log("userId: ", req.body.userId);
     const user = await userModel.findById(req.body.userId).select("-password");
-
-    // let user = "r";
-    console.log("User Found: ", user);
-
+    // const user="r";
+    console.log("found user", user);
     res.send({
-        success: true,
-        data: user,
-        message: "You are authorized to go the protected route",
+      success: true,
+      data: user,
+      message: "You are authorized to go the protected route",
     });
-}
+  };
 
-module.exports = {
+  module.exports = {
     register,
     login,
-    getCurrentUser
-}
+    getCurrentUser,
+  };
