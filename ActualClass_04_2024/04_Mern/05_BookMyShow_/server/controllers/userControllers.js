@@ -1,5 +1,6 @@
 const userModel = require("../model/userModel");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 /**
  "name":"siri",
@@ -17,7 +18,15 @@ const register = async (req, res) => {
             })
         }
 
-        const newUser = new userModel(req.body);
+        // Has the password.
+        const saltRound = 10; // Heigh the number, more secure the passsword but it take more time to hash it.
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRound);
+        console.log("hashedPassword: ", hashedPassword);
+
+        const newUser = new userModel({
+            ...req.body,
+            password: hashedPassword,
+        });
         await newUser.save();
 
         res.send({
@@ -29,12 +38,22 @@ const register = async (req, res) => {
     }
 }
 
+async function hashPassword(password){
+    console.time("time taken");
+    const salt = await bcrypt.genSalt(10);
+    console.log("salt", salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    console.log("hashedPassword: ", hashedPassword);
+    console.timeEnd("time taken");
+    console.log("*******************");
+}
+
 const login = async (req, res) => {
     try {
         const user = await userModel.findOne({ email: req.body.email });
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
             expiresIn: "1d",
-          });
+        });
         if (!user) {
             return res.send({
                 success: false,
@@ -42,12 +61,15 @@ const login = async (req, res) => {
             })
         }
 
-        if (req.body.password !== user.password) {
+        const isMatch = await bcrypt.compare(req.body.password, user.password);
+        if (!isMatch) {
             return res.send({
                 success: false,
                 message: "Sorry, Invalid Password!, Try again.",
             })
         }
+
+        // hashPassword(req.body.password);
 
         res.send({
             success: true,
@@ -68,14 +90,14 @@ const getCurrentUser = async (req, res) => {
     // const user="r";
     console.log("found user", user);
     res.send({
-      success: true,
-      data: user,
-      message: "You are authorized to go the protected route",
+        success: true,
+        data: user,
+        message: "You are authorized to go the protected route",
     });
-  };
+};
 
-  module.exports = {
+module.exports = {
     register,
     login,
     getCurrentUser,
-  };
+};
