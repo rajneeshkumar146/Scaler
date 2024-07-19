@@ -8,13 +8,16 @@ function Forget() {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    console.log(values);
+    console.log("11",values);
     try {
       const response = await ForgetPassword(values);
-      if (response.success) {
+      console.log("/forgetPAssword")
+      if (response.status=="success") {
         message.success(response.message);
         alert("OTP sent to your email");
+        console.log("success");
         // window.location.href = "/reset";
+
         navigate(`/reset/${encodeURIComponent(values.email)}`); // saikaran.20@gmail.com
       } else {
         message.error(response.message);

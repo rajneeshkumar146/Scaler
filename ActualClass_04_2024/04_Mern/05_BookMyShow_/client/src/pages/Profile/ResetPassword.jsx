@@ -10,7 +10,7 @@ function Reset() {
   const onFinish = async (values) => {
     try {
       const response = await ResetPassword(values, email);
-      if (response.success) {
+      if (response.status == "success") {
         message.success(response.message);
         // window.location.href = "/login";
         navigate("/login");

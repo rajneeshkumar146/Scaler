@@ -70,7 +70,6 @@ const login = async (req, res) => {
         }
 
         // hashPassword(req.body.password);
-
         res.send({
             success: true,
             message: "Login successful",
