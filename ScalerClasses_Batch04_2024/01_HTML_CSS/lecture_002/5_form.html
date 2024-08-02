@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form>
+
+        <div class="personalInfo">
+
+            <label>Name: </label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email: </label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label>Phone Number: </label>
+            <!-- <input type="number" id="number"> -->
+            <input type="text" id="number" pattern="/d{10}" maxlength="10" title="Enter a 10 digit phone number">
+
+            <label>Age: </label>
+            <input type="number" id="age" min="1" max="100">
+            
+            <label>Birthday: </label>
+            <input type="date" id="birthday" max="2025-03-29">
+
+        </div>
+
+        <div class="food">
+
+            <p>Food</p>
+
+            <label>Apple</label>
+            <input type="checkbox">
+
+            <label>Orange</label>
+            <input type="checkbox">
+
+            <label>Banana</label>
+            <input type="checkbox">
+
+        </div>
+
+        <div class="gender">
+
+            <p>Gender</p>
+
+            <label>Male</label>
+            <input name="gender" value="male" type="radio">
+
+            <label>Female</label>
+            <input name="gender" value="female" type="radio">
+
+
+            <label>Eye Color</label>
+            <select>
+                <option>Blue</option>
+                <option>Black</option>
+                <option>Brown</option>
+                <option>Red</option>
+            </select>
+
+        </div>
+
+
+    </form>
+    
+</body>
+</html>
