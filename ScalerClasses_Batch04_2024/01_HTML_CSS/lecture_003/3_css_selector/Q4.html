@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* In both cases p tag is decendent of c1 so both element will become blue, Uncomment this line to see result. */
+    /* .c1 p {
+        color: blue;
+    } */
+
+    /* To select direct child we should use '>, Yes it works,Uncomment this line to see result. */
+    /* div>p{
+        color: blue;
+    } */
+
+    .c1>p{
+        color:blue;
+    }
+
+    span>p{
+        color: green
+    }
+
+   
+</style>
+
+<body>
+    <!-- select "I'm the direct son" and make it blue  -->
+    <div class="c1">
+        <p>
+            I'm the direct son
+        </p>
+    </div>
+
+    <div class="c1">
+        <span>
+            <p>I'm the indirect son</p>
+        </span>
+    </div>
+</body>
+
+</html>
